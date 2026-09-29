@@ -1,0 +1,1222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>Smart College AI — Digital Twin OS</title>
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin=""/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+
+  <!-- Tailwind CSS CDN & Config -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "secondary": "#00687a",
+            "on-tertiary-fixed-variant": "#5516be",
+            "surface-container-high": "#dce9ff",
+            "on-secondary-fixed": "#001f26",
+            "tertiary": "#4700ab",
+            "on-primary-fixed-variant": "#372abf",
+            "on-secondary-container": "#006172",
+            "on-primary-fixed": "#100069",
+            "outline-variant": "#c7c4d7",
+            "on-error-container": "#93000a",
+            "secondary-container": "#57dffe",
+            "on-secondary-fixed-variant": "#004e5c",
+            "on-surface-variant": "#464554",
+            "inverse-on-surface": "#eaf1ff",
+            "inverse-primary": "#c3c0ff",
+            "on-tertiary-container": "#cfbaff",
+            "outline": "#777586",
+            "surface-variant": "#d3e4fe",
+            "on-primary": "#ffffff",
+            "on-error": "#ffffff",
+            "primary": "#2a14b4",
+            "surface-container-lowest": "#ffffff",
+            "primary-fixed": "#e3dfff",
+            "tertiary-container": "#6029c9",
+            "error": "#ba1a1a",
+            "secondary-fixed-dim": "#4cd7f6",
+            "tertiary-fixed": "#e9ddff",
+            "surface-container-low": "#eff4ff",
+            "surface-dim": "#cbdbf5",
+            "secondary-fixed": "#acedff",
+            "tertiary-fixed-dim": "#d0bcff",
+            "error-container": "#ffdad6",
+            "on-primary-container": "#c1beff",
+            "surface-container": "#e5eeff",
+            "surface-container-highest": "#d3e4fe",
+            "surface-tint": "#5148d7",
+            "on-background": "#0b1c30",
+            "surface": "#f8f9ff",
+            "on-tertiary-fixed": "#23005c",
+            "primary-fixed-dim": "#c3c0ff",
+            "on-secondary": "#ffffff",
+            "primary-container": "#4338ca",
+            "background": "#f8f9ff",
+            "on-tertiary": "#ffffff",
+            "inverse-surface": "#213145",
+            "surface-bright": "#f8f9ff",
+            "on-surface": "#0b1c30"
+          },
+          borderRadius: {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "2xl": "1rem",
+            "3xl": "1.5rem",
+            "full": "9999px"
+          },
+          fontFamily: {
+            "headline-sm": ["Plus Jakarta Sans"],
+            "body-lg": ["Inter"],
+            "headline-xl": ["Plus Jakarta Sans"],
+            "label-xs": ["Inter"],
+            "mono-data": ["JetBrains Mono"],
+            "display-lg": ["Plus Jakarta Sans"],
+            "label-md": ["Inter"],
+            "body-sm": ["Inter"],
+            "body-md": ["Inter"],
+            "headline-lg": ["Plus Jakarta Sans"]
+          }
+        }
+      }
+    };
+  </script>
+
+  <!-- Supabase JS Client v2 CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+  <style>
+    @layer base {
+      html, body { margin: 0; padding: 0; }
+      body { overscroll-behavior: none; }
+    }
+    ::-webkit-scrollbar { width: 6px; height: 6px; }
+    ::-webkit-scrollbar-track { background: #eff4ff; }
+    ::-webkit-scrollbar-thumb { background: #c7c4d7; border-radius: 9999px; }
+    ::-webkit-scrollbar-thumb:hover { background: #777586; }
+    .tab-content { display: none; }
+    .tab-content.active { display: block; }
+    .auth-bg-gradient {
+      background: radial-gradient(circle at 10% 20%, rgba(67, 56, 202, 0.08) 0%, rgba(248, 249, 255, 1) 90%);
+    }
+  </style>
+</head>
+<body class="bg-surface font-body-md text-on-surface antialiased">
+
+  <!-- ========================================================================= -->
+  <!-- 1. MANDATORY LOGIN VIEW (AUTHENTICATION GATE) -->
+  <!-- ========================================================================= -->
+  <div id="auth-screen" class="fixed inset-0 z-[100] auth-bg-gradient flex items-center justify-center p-4">
+    <div class="w-full max-w-lg rounded-3xl bg-surface-container-lowest border border-surface-container shadow-2xl p-8 sm:p-10 flex flex-col gap-6 relative overflow-hidden">
+      <!-- Ambient decorative glow -->
+      <div class="absolute -top-24 -right-24 w-60 h-60 rounded-full bg-primary-fixed/30 blur-3xl pointer-events-none"></div>
+      <div class="absolute -bottom-24 -left-24 w-60 h-60 rounded-full bg-secondary-container/20 blur-3xl pointer-events-none"></div>
+
+      <!-- College Brand Header -->
+      <div class="flex flex-col items-center text-center space-y-2 relative z-10">
+        <div class="w-14 h-14 rounded-2xl bg-primary-container text-on-primary flex items-center justify-center shadow-md mb-1">
+          <span class="material-symbols-outlined text-[32px]">school</span>
+        </div>
+        <h1 class="font-headline-xl text-2xl sm:text-3xl font-extrabold text-on-surface tracking-tight">Smart College AI</h1>
+        <p class="font-mono-data text-xs font-semibold text-secondary">Digital Twin Campus OS • Secure Login</p>
+      </div>
+
+      <!-- Role Selection Tabs -->
+      <div class="p-1.5 bg-surface-container-low rounded-2xl flex items-center justify-between relative z-10">
+        <button id="auth-tab-student" class="flex-1 py-2 px-3 text-center rounded-xl font-label-md text-xs sm:text-sm bg-surface-container-lowest text-primary shadow-sm font-bold transition-all flex items-center justify-center gap-1.5" type="button">
+          <span class="material-symbols-outlined text-[18px]">person</span>
+          <span>Student Sign In</span>
+        </button>
+        <button id="auth-tab-staff" class="flex-1 py-2 px-3 text-center rounded-xl font-label-md text-xs sm:text-sm text-on-surface-variant hover:text-on-surface font-semibold transition-all flex items-center justify-center gap-1.5" type="button">
+          <span class="material-symbols-outlined text-[18px]">badge</span>
+          <span>Faculty / Staff Sign In</span>
+        </button>
+      </div>
+
+      <!-- Error Alert Message -->
+      <div id="auth-error-banner" class="hidden p-3.5 rounded-xl bg-red-50 border border-red-200 text-red-700 text-xs font-medium flex items-center gap-2">
+        <span class="material-symbols-outlined text-[18px]">error</span>
+        <span id="auth-error-text">Invalid login credentials.</span>
+      </div>
+
+      <!-- Login Form -->
+      <form id="auth-login-form" class="space-y-4 relative z-10">
+        <div class="space-y-1.5">
+          <label id="auth-ident-label" class="text-xs font-bold text-on-surface-variant uppercase tracking-wider">
+            Student ID or College Email
+          </label>
+          <div class="relative flex items-center">
+            <span class="material-symbols-outlined absolute left-3.5 text-outline text-[20px]">account_circle</span>
+            <input id="auth-identifier-input" class="w-full pl-11 pr-4 py-3 bg-surface-container-low/70 border border-surface-container rounded-xl text-body-md text-on-surface placeholder:text-outline focus:outline-none focus:bg-surface-container-lowest focus:border-primary/60 transition-all" placeholder="e.g. 23331a42001 or aarav.sharma1@college.edu" required type="text"/>
+          </div>
+        </div>
+
+        <div class="space-y-1.5">
+          <div class="flex items-center justify-between">
+            <label class="text-xs font-bold text-on-surface-variant uppercase tracking-wider">Password</label>
+            <span class="text-xs text-outline font-mono-data">Default: student@123 / staff@123</span>
+          </div>
+          <div class="relative flex items-center">
+            <span class="material-symbols-outlined absolute left-3.5 text-outline text-[20px]">lock</span>
+            <input id="auth-password-input" class="w-full pl-11 pr-11 py-3 bg-surface-container-low/70 border border-surface-container rounded-xl text-body-md text-on-surface placeholder:text-outline focus:outline-none focus:bg-surface-container-lowest focus:border-primary/60 transition-all" placeholder="Enter your password" required type="password"/>
+            <button id="auth-toggle-pwd" class="absolute right-3 p-1 text-outline hover:text-on-surface transition-colors" type="button">
+              <span class="material-symbols-outlined text-[20px]">visibility</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Submit Button -->
+        <button id="auth-submit-btn" class="w-full py-3.5 rounded-xl bg-primary-container text-on-primary font-headline-sm text-sm font-bold hover:bg-primary transition-all shadow-md active:scale-[0.99] flex items-center justify-center gap-2" type="submit">
+          <span>Sign In to Campus OS</span>
+          <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+        </button>
+      </form>
+
+      <!-- 1-Click Quick Demo Sign-in Pills -->
+      <div class="space-y-2.5 pt-2 border-t border-surface-container/60 relative z-10">
+        <p class="text-center text-xs font-bold text-outline uppercase tracking-wider">⚡ 1-Click Quick Demo Sign In</p>
+        
+        <!-- Student Demo Pills -->
+        <div id="demo-pills-student" class="flex flex-wrap items-center justify-center gap-2">
+          <button class="demo-login-chip px-3 py-1.5 rounded-xl bg-surface-container-low hover:bg-surface-container text-xs font-medium text-on-surface border border-surface-container transition-all" data-role="student" data-id="23331a42001" data-pwd="student@123" type="button">
+            🎓 Aarav Sharma (CSE)
+          </button>
+          <button class="demo-login-chip px-3 py-1.5 rounded-xl bg-surface-container-low hover:bg-surface-container text-xs font-medium text-on-surface border border-surface-container transition-all" data-role="student" data-id="23331a42002" data-pwd="student@123" type="button">
+            🎓 Priya Patel (IT)
+          </button>
+          <button class="demo-login-chip px-3 py-1.5 rounded-xl bg-surface-container-low hover:bg-surface-container text-xs font-medium text-on-surface border border-surface-container transition-all" data-role="student" data-id="23331a42006" data-pwd="student@123" type="button">
+            🎓 Ananya Rao (EEE)
+          </button>
+        </div>
+
+        <!-- Staff Demo Pills -->
+        <div id="demo-pills-staff" class="hidden flex flex-wrap items-center justify-center gap-2">
+          <button class="demo-login-chip px-3 py-1.5 rounded-xl bg-surface-container-low hover:bg-surface-container text-xs font-medium text-on-surface border border-surface-container transition-all" data-role="staff" data-id="STF101" data-pwd="staff@123" type="button">
+            👨‍🏫 Dr. Rajesh Raman (CSE HOD)
+          </button>
+          <button class="demo-login-chip px-3 py-1.5 rounded-xl bg-surface-container-low hover:bg-surface-container text-xs font-medium text-on-surface border border-surface-container transition-all" data-role="staff" data-id="STF105" data-pwd="staff@123" type="button">
+            👨‍🏫 Prof. Amitav Sen (IT HOD)
+          </button>
+          <button class="demo-login-chip px-3 py-1.5 rounded-xl bg-surface-container-low hover:bg-surface-container text-xs font-medium text-on-surface border border-surface-container transition-all" data-role="staff" data-id="STF117" data-pwd="staff@123" type="button">
+            🏛️ Dr. Sudhir Joshi (Dean)
+          </button>
+        </div>
+      </div>
+
+      <!-- Footer Info -->
+      <div class="text-center text-[11px] text-outline pt-1">
+        Connected to Supabase Project: <code class="font-mono-data text-primary">https://aqfqdjhddfvyprpwccyp.supabase.co</code>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ========================================================================= -->
+  <!-- 2. MAIN APPLICATION WORKSPACE (POST-LOGIN) -->
+  <!-- ========================================================================= -->
+  <div id="app-workspace" class="hidden">
+    <!-- SIDEBAR -->
+    <aside class="fixed left-0 top-0 h-full w-72 bg-surface-container-lowest border-r border-surface-container/70 shadow-[0_1px_8px_rgba(0,0,0,0.02)] z-50 flex flex-col justify-between overflow-y-auto">
+      <div class="p-6">
+        <!-- App Brand -->
+        <div class="flex items-center gap-3 mb-6">
+          <div class="w-10 h-10 rounded-xl bg-primary-container text-on-primary flex items-center justify-center shadow-sm">
+            <span class="material-symbols-outlined text-[24px]">school</span>
+          </div>
+          <div class="flex flex-col">
+            <span class="font-headline-sm text-lg text-on-surface font-bold tracking-tight">Smart College AI</span>
+            <span class="font-mono-data text-[11px] text-secondary font-medium">Digital Twin OS</span>
+          </div>
+        </div>
+
+        <!-- Role Badge Display -->
+        <div class="p-3 bg-surface-container-low rounded-xl flex items-center justify-between mb-6 border border-surface-container">
+          <div class="flex items-center gap-2">
+            <span id="sidebar-role-icon" class="material-symbols-outlined text-primary text-[20px]">person</span>
+            <div class="flex flex-col">
+              <span id="sidebar-user-name" class="font-bold text-xs text-on-surface truncate max-w-[140px]">Aarav Sharma</span>
+              <span id="sidebar-user-role-badge" class="font-mono-data text-[10px] text-secondary font-semibold">Student Portal</span>
+            </div>
+          </div>
+          <span class="h-2 w-2 rounded-full bg-emerald-500 animate-pulse"></span>
+        </div>
+
+        <!-- Dynamic Navigation Links -->
+        <div class="space-y-6">
+          <!-- STUDENT NAVIGATION SECTION -->
+          <div id="nav-student-section" class="space-y-1">
+            <p class="px-2 font-label-xs text-[10px] uppercase tracking-wider text-outline font-semibold mb-2">Student Workspace</p>
+            <nav class="flex flex-col gap-1">
+              <button data-tab="dashboard" class="nav-item active flex items-center gap-3 px-3 py-2.5 transition-all bg-primary-container text-on-primary rounded-xl font-medium shadow-sm w-full text-left">
+                <span class="material-symbols-outlined text-[20px]">space_dashboard</span>
+                <span class="font-body-md text-sm">Dashboard</span>
+              </button>
+              <button data-tab="ai-assistant" class="nav-item flex items-center gap-3 px-3 py-2.5 rounded-xl text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-all w-full text-left">
+                <span class="material-symbols-outlined text-[20px]">neurology</span>
+                <span class="font-body-md text-sm">AI Copilot (Chatbot)</span>
+              </button>
+              <button data-tab="attendance" class="nav-item flex items-center gap-3 px-3 py-2.5 rounded-xl text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-all w-full text-left">
+                <span class="material-symbols-outlined text-[20px]">verified</span>
+                <span class="font-body-md text-sm">Attendance Ledger</span>
+              </button>
+              <button data-tab="fees" class="nav-item flex items-center gap-3 px-3 py-2.5 rounded-xl text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-all w-full text-left">
+                <span class="material-symbols-outlined text-[20px]">payments</span>
+                <span class="font-body-md text-sm">Fees & Payments</span>
+              </button>
+              <button data-tab="cgpa-marks" class="nav-item flex items-center gap-3 px-3 py-2.5 rounded-xl text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-all w-full text-left">
+                <span class="material-symbols-outlined text-[20px]">grade</span>
+                <span class="font-body-md text-sm">CGPA & Marks</span>
+              </button>
+              <button data-tab="certificates" class="nav-item flex items-center gap-3 px-3 py-2.5 rounded-xl text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-all w-full text-left">
+                <span class="material-symbols-outlined text-[20px]">workspace_premium</span>
+                <span class="font-body-md text-sm">Certificates</span>
+              </button>
+              <button data-tab="digital-twin" class="nav-item flex items-center gap-3 px-3 py-2.5 rounded-xl text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-all w-full text-left">
+                <span class="material-symbols-outlined text-[20px]">hub</span>
+                <span class="font-body-md text-sm">Digital Twin Monitor</span>
+              </button>
+              <button data-tab="students-directory" class="nav-item flex items-center gap-3 px-3 py-2.5 rounded-xl text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-all w-full text-left">
+                <span class="material-symbols-outlined text-[20px]">group</span>
+                <span class="font-body-md text-sm">Student Dataset</span>
+              </button>
+              <button data-tab="staff-directory" class="nav-item flex items-center gap-3 px-3 py-2.5 rounded-xl text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-all w-full text-left">
+                <span class="material-symbols-outlined text-[20px]">badge</span>
+                <span class="font-body-md text-sm">Staff Directory</span>
+              </button>
+              <button data-tab="settings" class="nav-item flex items-center gap-3 px-3 py-2.5 rounded-xl text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-all w-full text-left">
+                <span class="material-symbols-outlined text-[20px]">settings</span>
+                <span class="font-body-md text-sm">Supabase & Settings</span>
+              </button>
+            </nav>
+          </div>
+
+          <!-- STAFF NAVIGATION SECTION -->
+          <div id="nav-staff-section" class="hidden space-y-1">
+            <p class="px-2 font-label-xs text-[10px] uppercase tracking-wider text-outline font-semibold mb-2">Faculty & Staff Hub</p>
+            <nav class="flex flex-col gap-1">
+              <button data-tab="staff-dashboard" class="nav-item active flex items-center gap-3 px-3 py-2.5 transition-all bg-primary-container text-on-primary rounded-xl font-medium shadow-sm w-full text-left">
+                <span class="material-symbols-outlined text-[20px]">co_present</span>
+                <span class="font-body-md text-sm">Faculty Overview</span>
+              </button>
+              <button data-tab="staff-courses" class="nav-item flex items-center gap-3 px-3 py-2.5 rounded-xl text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-all w-full text-left">
+                <span class="material-symbols-outlined text-[20px]">menu_book</span>
+                <span class="font-body-md text-sm">My Courses & Lectures</span>
+              </button>
+              <button data-tab="staff-roster" class="nav-item flex items-center gap-3 px-3 py-2.5 rounded-xl text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-all w-full text-left">
+                <span class="material-symbols-outlined text-[20px]">how_to_reg</span>
+                <span class="font-body-md text-sm">Attendance Marker</span>
+              </button>
+              <button data-tab="staff-approvals" class="nav-item flex items-center gap-3 px-3 py-2.5 rounded-xl text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-all w-full text-left">
+                <span class="material-symbols-outlined text-[20px]">fact_check</span>
+                <span class="font-body-md text-sm">Certificate Approvals</span>
+              </button>
+              <button data-tab="ai-assistant" class="nav-item flex items-center gap-3 px-3 py-2.5 rounded-xl text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-all w-full text-left">
+                <span class="material-symbols-outlined text-[20px]">neurology</span>
+                <span class="font-body-md text-sm">Faculty AI Assistant</span>
+              </button>
+              <button data-tab="students-directory" class="nav-item flex items-center gap-3 px-3 py-2.5 rounded-xl text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-all w-full text-left">
+                <span class="material-symbols-outlined text-[20px]">group</span>
+                <span class="font-body-md text-sm">Student Dataset</span>
+              </button>
+              <button data-tab="staff-directory" class="nav-item flex items-center gap-3 px-3 py-2.5 rounded-xl text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-all w-full text-left">
+                <span class="material-symbols-outlined text-[20px]">badge</span>
+                <span class="font-body-md text-sm">Staff Dataset</span>
+              </button>
+              <button data-tab="settings" class="nav-item flex items-center gap-3 px-3 py-2.5 rounded-xl text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-all w-full text-left">
+                <span class="material-symbols-outlined text-[20px]">settings</span>
+                <span class="font-body-md text-sm">Supabase & Settings</span>
+              </button>
+            </nav>
+          </div>
+        </div>
+      </div>
+
+      <!-- Status indicator footer -->
+      <div class="p-3 m-4 rounded-xl bg-surface-container-low border border-surface-container flex items-center justify-between">
+        <div class="flex items-center gap-2.5">
+          <div id="twin-status-dot" class="h-2.5 w-2.5 rounded-full bg-emerald-500 animate-pulse"></div>
+          <div class="flex flex-col">
+            <span class="font-label-xs text-on-surface font-semibold">Twin Engine Active</span>
+            <span id="backend-status-text" class="font-mono-data text-[11px] text-on-surface-variant">Supabase Cloud Connected</span>
+          </div>
+        </div>
+        <button id="quick-config-btn" title="Supabase Details" class="p-1 rounded-lg text-primary hover:bg-surface-container transition-colors">
+          <span class="material-symbols-outlined text-[18px]">cloud_sync</span>
+        </button>
+      </div>
+    </aside>
+
+    <!-- TOP HEADER -->
+    <div class="pl-72">
+      <header class="fixed top-0 left-72 right-0 h-16 bg-surface-container-lowest/80 backdrop-blur-md border-b border-surface-container/60 z-40 flex items-center justify-between px-8">
+        <div class="flex items-center gap-4">
+          <!-- Global Search -->
+          <div class="relative flex items-center">
+            <span class="material-symbols-outlined absolute left-3 text-outline text-[18px]">search</span>
+            <input id="global-search-input" class="w-80 pl-9 pr-4 py-2 bg-surface-container-low/70 border border-surface-container rounded-xl font-body-sm text-body-sm text-on-surface placeholder:text-outline focus:outline-none focus:bg-surface-container-lowest focus:border-primary/40 transition-colors" placeholder="Search courses, records, requests, staff..." type="text"/>
+          </div>
+        </div>
+
+        <!-- User Info & Logout -->
+        <div class="flex items-center gap-4">
+          <!-- User Profile Display Pill -->
+          <div class="flex items-center gap-2.5 px-3 py-1.5 bg-surface-container-low border border-surface-container rounded-xl">
+            <div id="header-avatar" class="w-7 h-7 rounded-lg bg-primary-container text-on-primary flex items-center justify-center font-bold text-xs">
+              AS
+            </div>
+            <div class="flex flex-col text-left">
+              <span id="header-user-name" class="font-bold text-xs text-on-surface leading-tight">Aarav Sharma</span>
+              <span id="header-user-sub" class="font-mono-data text-[10px] text-secondary">23331a42001 • CSE</span>
+            </div>
+          </div>
+
+          <!-- Notification Bell -->
+          <button id="notif-btn" class="relative p-2 rounded-xl text-on-surface-variant hover:bg-surface-container-low transition-colors" type="button" title="View Notifications">
+            <span class="material-symbols-outlined text-[22px]">notifications</span>
+            <span class="absolute top-2 right-2 h-2 w-2 rounded-full bg-primary"></span>
+          </button>
+
+          <!-- Logout Button -->
+          <button id="header-logout-btn" class="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-red-50 text-red-700 hover:bg-red-100 font-label-md text-xs font-semibold border border-red-200 transition-all shadow-sm" title="Log Out of Campus OS">
+            <span class="material-symbols-outlined text-[16px]">logout</span>
+            <span>Sign Out</span>
+          </button>
+        </div>
+      </header>
+
+      <!-- ===================================================================== -->
+      <!-- TAB CONTENTS -->
+      <!-- ===================================================================== -->
+      <main class="w-full pt-20 px-8 py-8 bg-surface min-h-screen">
+        <div class="max-w-7xl mx-auto flex flex-col w-full gap-8">
+
+          <!-- TAB 1: STUDENT DASHBOARD -->
+          <div id="tab-dashboard" class="tab-content active space-y-8">
+            <!-- Welcome Banner -->
+            <section class="rounded-2xl bg-surface-container-lowest p-8 border border-surface-container/60 shadow-[0_1px_4px_rgba(0,0,0,0.02)] flex flex-col md:flex-row md:items-center justify-between gap-6">
+              <div class="space-y-1.5">
+                <h1 id="welcome-title" class="font-headline-xl text-3xl font-extrabold text-on-surface tracking-tight">Good morning, Aarav 👋</h1>
+                <p id="welcome-subtitle" class="font-body-md text-body-md text-on-surface-variant font-medium">B.Tech CSE • 4th Year • Semester 8</p>
+              </div>
+              <div class="flex flex-wrap items-center gap-3">
+                <button id="trigger-ai-modal" class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-primary-container text-on-primary font-label-md text-label-md font-semibold hover:bg-primary transition-all shadow-sm active:scale-[0.99]" type="button">
+                  <span class="material-symbols-outlined text-[18px]">neurology</span>
+                  <span>Ask AI Copilot</span>
+                </button>
+                <button id="quick-pay-btn" class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-surface-container-low text-on-surface font-label-md text-label-md font-semibold hover:bg-surface-container border border-surface-container transition-all" type="button">
+                  <span class="material-symbols-outlined text-[18px]">payments</span>
+                  <span>Pay Fees</span>
+                </button>
+                <button id="trigger-upload-modal" class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-surface-container-low text-on-surface font-label-md text-label-md font-semibold hover:bg-surface-container border border-surface-container transition-all" type="button">
+                  <span class="material-symbols-outlined text-[18px]">workspace_premium</span>
+                  <span>Apply for Certificate</span>
+                </button>
+              </div>
+            </section>
+
+            <!-- 4 Overview Cards -->
+            <section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+              <!-- Attendance Card -->
+              <div class="rounded-2xl bg-surface-container-lowest p-6 border border-surface-container/60 shadow-sm flex flex-col justify-between hover:border-surface-container transition-all">
+                <div class="space-y-2">
+                  <div class="flex items-center justify-between">
+                    <span class="font-label-md text-label-md font-semibold text-outline">Overall Attendance</span>
+                    <span id="card-attendance-badge" class="px-2.5 py-0.5 rounded-full bg-emerald-50 text-emerald-700 text-label-xs font-semibold">On Track</span>
+                  </div>
+                  <div class="flex items-baseline gap-2 pt-1">
+                    <span id="card-attendance-val" class="font-headline-xl text-3xl font-extrabold text-on-surface">87.4%</span>
+                  </div>
+                </div>
+                <div class="pt-5 space-y-2">
+                  <div class="w-full bg-surface-container-low rounded-full h-2 overflow-hidden">
+                    <div id="card-attendance-bar" class="bg-primary-container h-full rounded-full" style="width: 87.4%"></div>
+                  </div>
+                  <div class="flex items-center justify-between text-body-sm text-on-surface-variant">
+                    <span id="card-attendance-fraction">142/162 attended</span>
+                    <span class="text-outline font-medium">Cutoff: 75%</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- CGPA Card -->
+              <div class="rounded-2xl bg-surface-container-lowest p-6 border border-surface-container/60 shadow-sm flex flex-col justify-between hover:border-surface-container transition-all">
+                <div class="space-y-2">
+                  <div class="flex items-center justify-between">
+                    <span class="font-label-md text-label-md font-semibold text-outline">Cumulative CGPA</span>
+                    <span id="card-cgpa-badge" class="px-2.5 py-0.5 rounded-full bg-surface-container-high text-primary text-label-xs font-semibold">Distinction Tier</span>
+                  </div>
+                  <div class="flex items-baseline gap-1.5 pt-1">
+                    <span id="card-cgpa-val" class="font-headline-xl text-3xl font-extrabold text-on-surface">8.74</span>
+                    <span class="font-mono-data text-body-sm text-outline">/ 10.0</span>
+                  </div>
+                </div>
+                <div class="pt-5 flex items-center justify-between border-t border-surface-container/50">
+                  <span class="text-body-sm text-on-surface-variant">Sem 7 SGPA</span>
+                  <span class="font-mono-data text-body-sm font-bold text-on-surface">8.85</span>
+                </div>
+              </div>
+
+              <!-- Fees Card -->
+              <div class="rounded-2xl bg-surface-container-lowest p-6 border border-surface-container/60 shadow-sm flex flex-col justify-between hover:border-surface-container transition-all">
+                <div class="space-y-2">
+                  <div class="flex items-center justify-between">
+                    <span class="font-label-md text-label-md font-semibold text-outline">Tuition Balance</span>
+                    <span id="card-fee-badge" class="px-2.5 py-0.5 rounded-full bg-amber-50 text-amber-700 text-label-xs font-semibold">Due Nov 15</span>
+                  </div>
+                  <div class="flex items-baseline gap-1 pt-1">
+                    <span id="card-fee-val" class="font-headline-xl text-3xl font-extrabold text-on-surface">₹12,500</span>
+                  </div>
+                </div>
+                <div class="pt-5 flex items-center justify-between">
+                  <span class="text-body-sm text-on-surface-variant">Semester 8 Dues</span>
+                  <button id="card-pay-btn" class="px-3 py-1.5 rounded-full bg-primary-container text-on-primary text-label-xs font-semibold hover:bg-primary transition-colors" type="button">
+                    Pay Now
+                  </button>
+                </div>
+              </div>
+
+              <!-- Active Requests Card -->
+              <div class="rounded-2xl bg-surface-container-lowest p-6 border border-surface-container/60 shadow-sm flex flex-col justify-between hover:border-surface-container transition-all">
+                <div class="space-y-2">
+                  <div class="flex items-center justify-between">
+                    <span class="font-label-md text-label-md font-semibold text-outline">Active Requests</span>
+                    <span id="card-requests-badge" class="px-2.5 py-0.5 rounded-full bg-surface-container-low text-secondary text-label-xs font-semibold">1 Pending</span>
+                  </div>
+                  <div class="flex items-baseline gap-2 pt-1">
+                    <span id="card-requests-val" class="font-headline-xl text-3xl font-extrabold text-on-surface">1</span>
+                    <span class="text-body-sm text-outline">in progress</span>
+                  </div>
+                </div>
+                <div id="card-requests-preview" class="pt-5 space-y-1 text-body-sm text-on-surface-variant">
+                  <div class="flex justify-between items-center">
+                    <span class="truncate">Bonafide Certificate</span>
+                    <span class="text-[11px] text-secondary font-medium">Under Review</span>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <!-- Alerts -->
+            <section class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div class="rounded-2xl bg-surface-container-lowest p-6 border border-amber-200/80 shadow-sm flex items-start gap-4">
+                <div class="w-10 h-10 rounded-xl bg-amber-50 text-amber-600 flex items-center justify-center shrink-0">
+                  <span class="material-symbols-outlined text-[22px]">warning</span>
+                </div>
+                <div class="flex-1 space-y-1">
+                  <div class="flex items-center justify-between">
+                    <h2 class="font-headline-sm text-base font-bold text-on-surface">Attendance Warning: DBMS</h2>
+                    <span class="font-mono-data text-xs font-bold text-amber-600">77.8%</span>
+                  </div>
+                  <p class="text-body-sm text-on-surface-variant leading-relaxed">
+                    Attend the next <strong class="text-on-surface font-semibold">2 lectures</strong> to reach the 80% safe zone and prevent exam clearance hold.
+                  </p>
+                  <div class="pt-2">
+                    <button id="view-schedule-quick" class="inline-flex items-center gap-1.5 text-label-md font-semibold text-primary hover:underline" type="button">
+                      <span>View Timetable</span>
+                      <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <div class="rounded-2xl bg-surface-container-lowest p-6 border border-surface-container/80 shadow-sm flex items-start gap-4">
+                <div class="w-10 h-10 rounded-xl bg-primary-fixed/50 text-primary flex items-center justify-center shrink-0">
+                  <span class="material-symbols-outlined text-[22px]">schedule</span>
+                </div>
+                <div class="flex-1 space-y-1">
+                  <div class="flex items-center justify-between">
+                    <h2 class="font-headline-sm text-base font-bold text-on-surface">Semester 8 Tuition Fee Deadline</h2>
+                    <span class="text-xs font-semibold text-secondary">Due in 14 days</span>
+                  </div>
+                  <p class="text-body-sm text-on-surface-variant leading-relaxed">
+                    Settle balance before Nov 15 to secure uninterrupted course registration with zero late penalty.
+                  </p>
+                  <div class="pt-2">
+                    <button id="review-settle-btn" class="inline-flex items-center gap-1.5 text-label-md font-semibold text-primary hover:underline" type="button">
+                      <span>Review & Settle</span>
+                      <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <!-- 2-Column Main Workspace -->
+            <section class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+              <div class="lg:col-span-7 space-y-6">
+                <!-- Subject Attendance -->
+                <div class="rounded-2xl bg-surface-container-lowest p-7 border border-surface-container/60 shadow-sm space-y-6">
+                  <div class="flex items-center justify-between">
+                    <div>
+                      <h2 class="font-headline-sm text-lg font-bold text-on-surface">Subject Attendance</h2>
+                      <p class="text-body-sm text-on-surface-variant">Live breakdown across currently enrolled courses</p>
+                    </div>
+                    <button data-tab="attendance" class="nav-switch-btn text-label-md font-semibold text-primary hover:underline">Detailed View</button>
+                  </div>
+                  <div id="dashboard-subjects-list" class="space-y-4"></div>
+                </div>
+
+                <!-- Recent Activity -->
+                <div class="rounded-2xl bg-surface-container-lowest p-7 border border-surface-container/60 shadow-sm space-y-6">
+                  <div class="flex items-center justify-between">
+                    <h2 class="font-headline-sm text-lg font-bold text-on-surface">Recent Activity</h2>
+                    <span class="text-xs font-semibold text-outline">Updated live</span>
+                  </div>
+                  <div id="dashboard-activities-list" class="space-y-4"></div>
+                </div>
+              </div>
+
+              <div class="lg:col-span-5 space-y-6">
+                <!-- Digital Twin Snapshot -->
+                <div class="rounded-2xl bg-surface-container-lowest p-6 border border-surface-container/60 shadow-sm space-y-5">
+                  <div class="flex items-center justify-between">
+                    <div class="flex items-center gap-2">
+                      <div class="w-8 h-8 rounded-lg bg-primary-fixed flex items-center justify-center text-primary">
+                        <span class="material-symbols-outlined text-[18px]">hub</span>
+                      </div>
+                      <h2 class="font-headline-sm text-base font-bold text-on-surface">Digital Twin Snapshot</h2>
+                    </div>
+                    <span class="px-2.5 py-0.5 rounded-full bg-emerald-50 text-emerald-700 text-label-xs font-semibold">Healthy</span>
+                  </div>
+                  <div class="flex items-center justify-between p-4 rounded-xl bg-surface-container-low/60 border border-surface-container/50">
+                    <div>
+                      <p class="text-xs text-outline font-medium">Twin Health Score</p>
+                      <div class="flex items-baseline gap-1.5 mt-0.5">
+                        <span id="twin-score-val" class="font-headline-xl text-2xl font-extrabold text-on-surface">94</span>
+                        <span class="text-xs text-outline">/ 100</span>
+                      </div>
+                    </div>
+                    <div class="text-right">
+                      <p class="text-xs text-outline font-medium">Status</p>
+                      <p class="text-body-sm font-semibold text-secondary mt-0.5">Optimal Graduation Pace</p>
+                    </div>
+                  </div>
+                  <button data-tab="digital-twin" class="nav-switch-btn w-full py-2.5 px-3 rounded-xl bg-surface-container-low text-on-surface hover:bg-surface-container font-label-md text-label-md font-semibold flex items-center justify-center gap-2 border border-surface-container transition-colors">
+                    <span>Open Full Twin Monitor</span>
+                    <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+                  </button>
+                </div>
+
+                <!-- Schedule -->
+                <div class="rounded-2xl bg-surface-container-lowest p-6 border border-surface-container/60 shadow-sm space-y-4">
+                  <div class="flex items-center justify-between">
+                    <div class="flex items-center gap-2">
+                      <span class="material-symbols-outlined text-primary text-[20px]">calendar_today</span>
+                      <h2 class="font-headline-sm text-base font-bold text-on-surface">Upcoming Schedule</h2>
+                    </div>
+                    <span class="text-xs font-semibold text-outline">Next 48h</span>
+                  </div>
+                  <div class="space-y-3">
+                    <div class="p-3.5 rounded-xl bg-surface-container-low/60 border border-surface-container/40 flex items-center justify-between">
+                      <div class="space-y-0.5">
+                        <p class="text-body-sm font-semibold text-on-surface">Natural Language Processing</p>
+                        <p class="text-xs text-outline">Today • 02:00 PM - 03:30 PM</p>
+                      </div>
+                      <span class="px-2.5 py-1 rounded-lg bg-surface-container font-mono-data text-xs font-semibold text-on-surface">Room 304</span>
+                    </div>
+                    <div class="p-3.5 rounded-xl bg-surface-container-low/60 border border-surface-container/40 flex items-center justify-between">
+                      <div class="space-y-0.5">
+                        <p class="text-body-sm font-semibold text-on-surface">Deep Learning Lab Session</p>
+                        <p class="text-xs text-outline">Tomorrow • 10:00 AM - 12:00 PM</p>
+                      </div>
+                      <span class="px-2.5 py-1 rounded-lg bg-surface-container font-mono-data text-xs font-semibold text-on-surface">Lab 404</span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Quick Ask AI Widget -->
+                <div class="rounded-2xl bg-surface-container-lowest p-6 border border-surface-container/60 shadow-sm space-y-4">
+                  <div class="flex items-center gap-2">
+                    <div class="w-7 h-7 rounded-lg bg-primary-container text-on-primary flex items-center justify-center">
+                      <span class="material-symbols-outlined text-[16px]">psychology</span>
+                    </div>
+                    <h2 class="font-headline-sm text-base font-bold text-on-surface">Ask AI Assistant</h2>
+                  </div>
+                  <div class="space-y-3">
+                    <div class="relative">
+                      <input class="w-full px-4 py-3 bg-surface-container-low/80 border border-surface-container rounded-xl text-body-sm placeholder:text-outline focus:outline-none focus:bg-surface-container-lowest focus:border-primary/50 transition-colors" id="widget-ai-input" placeholder="Ask your AI copilot anything..." type="text"/>
+                      <button class="absolute right-2 top-2 p-1.5 rounded-lg bg-primary-container text-on-primary hover:bg-primary transition-colors" id="widget-ai-send" type="button">
+                        <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+                      </button>
+                    </div>
+                    <div class="flex flex-wrap items-center gap-1.5">
+                      <button class="px-2.5 py-1 rounded-lg bg-surface-container-low hover:bg-surface-container text-on-surface-variant text-xs font-medium transition-colors prompt-tag" type="button">
+                        Can I skip DBMS today?
+                      </button>
+                      <button class="px-2.5 py-1 rounded-lg bg-surface-container-low hover:bg-surface-container text-on-surface-variant text-xs font-medium transition-colors prompt-tag" type="button">
+                        Explain Sem 8 fee breakup
+                      </button>
+                      <button class="px-2.5 py-1 rounded-lg bg-surface-container-low hover:bg-surface-container text-on-surface-variant text-xs font-medium transition-colors prompt-tag" type="button">
+                        Who is HOD of CSE?
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+          </div>
+
+          <!-- TAB 2: STAFF OVERVIEW (FACULTY WORKSPACE) -->
+          <div id="tab-staff-dashboard" class="tab-content space-y-8">
+            <section class="rounded-2xl bg-surface-container-lowest p-8 border border-surface-container/60 shadow-sm flex flex-col md:flex-row md:items-center justify-between gap-6">
+              <div class="space-y-1.5">
+                <h1 id="staff-welcome-title" class="font-headline-xl text-3xl font-extrabold text-on-surface tracking-tight">Welcome, Dr. Rajesh Raman 👋</h1>
+                <p id="staff-welcome-subtitle" class="font-body-md text-body-md text-on-surface-variant font-medium">Professor & HOD • Computer Science & Engineering</p>
+              </div>
+              <div class="flex flex-wrap items-center gap-3">
+                <button data-tab="staff-roster" class="nav-switch-btn inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-primary-container text-on-primary font-label-md text-label-md font-semibold hover:bg-primary transition-all shadow-sm">
+                  <span class="material-symbols-outlined text-[18px]">how_to_reg</span>
+                  <span>Mark Class Attendance</span>
+                </button>
+                <button data-tab="staff-approvals" class="nav-switch-btn inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-surface-container-low text-on-surface font-label-md text-label-md font-semibold hover:bg-surface-container border border-surface-container transition-all">
+                  <span class="material-symbols-outlined text-[18px]">fact_check</span>
+                  <span>Review Applications</span>
+                </button>
+              </div>
+            </section>
+
+            <!-- Staff Profile Overview Cards -->
+            <section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+              <div class="p-6 rounded-2xl bg-surface-container-lowest border border-surface-container/60 shadow-sm space-y-2">
+                <span class="text-xs font-semibold text-outline uppercase">Assigned Cabin</span>
+                <p id="staff-card-cabin" class="font-headline-xl text-2xl font-bold text-on-surface">CS-Block Room 301</p>
+                <span class="text-xs text-secondary font-medium">Primary Office</span>
+              </div>
+              <div class="p-6 rounded-2xl bg-surface-container-lowest border border-surface-container/60 shadow-sm space-y-2">
+                <span class="text-xs font-semibold text-outline uppercase">Department Students</span>
+                <p id="staff-card-students-count" class="font-headline-xl text-2xl font-bold text-on-surface">4 Enrolled</p>
+                <span class="text-xs text-emerald-600 font-semibold">Average Attendance: 87.4%</span>
+              </div>
+              <div class="p-6 rounded-2xl bg-surface-container-lowest border border-surface-container/60 shadow-sm space-y-2">
+                <span class="text-xs font-semibold text-outline uppercase">Office Hours</span>
+                <p id="staff-card-hours" class="font-headline-sm text-sm font-bold text-on-surface">02:00 PM - 04:00 PM (Mon-Wed)</p>
+                <span class="text-xs text-outline">Open for student consultations</span>
+              </div>
+              <div class="p-6 rounded-2xl bg-surface-container-lowest border border-surface-container/60 shadow-sm space-y-2">
+                <span class="text-xs font-semibold text-outline uppercase">Pending Approvals</span>
+                <p id="staff-card-pending-approvals" class="font-headline-xl text-2xl font-bold text-amber-600">2 Requests</p>
+                <span class="text-xs text-outline">Bonafide & transcripts queue</span>
+              </div>
+            </section>
+
+            <!-- Department Students Roster Preview -->
+            <section class="rounded-2xl bg-surface-container-lowest p-8 border border-surface-container/60 shadow-sm space-y-6">
+              <div class="flex items-center justify-between">
+                <div>
+                  <h2 class="font-headline-xl text-xl font-bold text-on-surface">Department Cohort Status</h2>
+                  <p class="text-body-sm text-on-surface-variant">Live academic monitoring of students in your department</p>
+                </div>
+                <button data-tab="staff-roster" class="nav-switch-btn text-label-md font-semibold text-primary hover:underline">
+                  Full Attendance Roster →
+                </button>
+              </div>
+              <div id="staff-dept-students-table" class="overflow-x-auto rounded-xl border border-surface-container"></div>
+            </section>
+          </div>
+
+          <!-- TAB 3: STAFF COURSES -->
+          <div id="tab-staff-courses" class="tab-content space-y-6">
+            <div class="rounded-2xl bg-surface-container-lowest p-8 border border-surface-container/60 shadow-sm space-y-6">
+              <h2 class="font-headline-xl text-2xl font-bold text-on-surface">Assigned Courses & Lecture Schedule</h2>
+              <div id="staff-courses-container" class="grid grid-cols-1 md:grid-cols-2 gap-5"></div>
+            </div>
+          </div>
+
+          <!-- TAB 4: STAFF ATTENDANCE MARKER -->
+          <div id="tab-staff-roster" class="tab-content space-y-6">
+            <div class="rounded-2xl bg-surface-container-lowest p-8 border border-surface-container/60 shadow-sm space-y-6">
+              <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+                <div>
+                  <h2 class="font-headline-xl text-2xl font-bold text-on-surface">Class Attendance Marker Desk</h2>
+                  <p class="text-body-sm text-on-surface-variant">Mark today's session attendance for enrolled students (updates attendance in real time)</p>
+                </div>
+              </div>
+              <div id="staff-roster-marking-table" class="overflow-x-auto rounded-xl border border-surface-container"></div>
+            </div>
+          </div>
+
+          <!-- TAB 5: STAFF APPROVALS DESK -->
+          <div id="tab-staff-approvals" class="tab-content space-y-6">
+            <div class="rounded-2xl bg-surface-container-lowest p-8 border border-surface-container/60 shadow-sm space-y-6">
+              <div class="flex items-center justify-between">
+                <div>
+                  <h2 class="font-headline-xl text-2xl font-bold text-on-surface">Academic Certificate Approvals Desk</h2>
+                  <p class="text-body-sm text-on-surface-variant">Review, authorize, or return student Bonafide, Transcript, and Course Completion requests</p>
+                </div>
+                <span class="px-3 py-1 rounded-full bg-surface-container text-xs font-semibold text-primary">Authority: HOD / Dean</span>
+              </div>
+              <div id="staff-approvals-table" class="overflow-x-auto rounded-xl border border-surface-container"></div>
+            </div>
+          </div>
+
+          <!-- TAB 6: FULL AI ASSISTANT CHATBOT (SHARED BY STUDENTS & STAFF) -->
+          <div id="tab-ai-assistant" class="tab-content space-y-6">
+            <div class="rounded-2xl bg-surface-container-lowest p-8 border border-surface-container/60 shadow-sm flex flex-col gap-6">
+              <div class="flex items-center justify-between pb-4 border-b border-surface-container/60">
+                <div class="flex items-center gap-3">
+                  <div class="w-12 h-12 rounded-2xl bg-primary-container text-on-primary flex items-center justify-center shadow-sm">
+                    <span class="material-symbols-outlined text-[28px]">neurology</span>
+                  </div>
+                  <div>
+                    <h2 class="font-headline-xl text-2xl font-bold text-on-surface">Campus AI Assistant & Copilot</h2>
+                    <p class="text-body-sm text-on-surface-variant">Continuous Digital Twin reasoning, attendance alerts, faculty cabin lookups & policy guidelines</p>
+                  </div>
+                </div>
+                <div class="flex items-center gap-2">
+                  <span class="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-emerald-50 text-emerald-700 text-xs font-semibold">
+                    <span class="h-2 w-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                    Model Online
+                  </span>
+                </div>
+              </div>
+
+              <!-- Suggested Prompt Chips -->
+              <div class="flex flex-wrap items-center gap-2">
+                <span class="text-xs font-semibold text-outline uppercase tracking-wider mr-1">Suggested:</span>
+                <button class="full-ai-prompt-chip px-3 py-1.5 rounded-xl bg-surface-container-low hover:bg-surface-container text-on-surface text-xs font-medium border border-surface-container transition-all">
+                  Can I skip DBMS today?
+                </button>
+                <button class="full-ai-prompt-chip px-3 py-1.5 rounded-xl bg-surface-container-low hover:bg-surface-container text-on-surface text-xs font-medium border border-surface-container transition-all">
+                  What is my tuition fee balance and deadline?
+                </button>
+                <button class="full-ai-prompt-chip px-3 py-1.5 rounded-xl bg-surface-container-low hover:bg-surface-container text-on-surface text-xs font-medium border border-surface-container transition-all">
+                  Who is the HOD of CSE and what is his cabin room?
+                </button>
+                <button class="full-ai-prompt-chip px-3 py-1.5 rounded-xl bg-surface-container-low hover:bg-surface-container text-on-surface text-xs font-medium border border-surface-container transition-all">
+                  How do I apply for a Bonafide Certificate?
+                </button>
+                <button class="full-ai-prompt-chip px-3 py-1.5 rounded-xl bg-surface-container-low hover:bg-surface-container text-on-surface text-xs font-medium border border-surface-container transition-all">
+                  What is the minimum attendance requirement?
+                </button>
+              </div>
+
+              <!-- Chat Messages Log Container -->
+              <div id="full-chat-history" class="space-y-4 max-h-[500px] overflow-y-auto p-4 rounded-2xl bg-surface-container-low/50 border border-surface-container/60">
+                <div class="flex items-start gap-3">
+                  <div class="w-8 h-8 rounded-xl bg-primary-container text-on-primary flex items-center justify-center shrink-0">
+                    <span class="material-symbols-outlined text-[18px]">smart_toy</span>
+                  </div>
+                  <div class="p-4 rounded-2xl bg-surface-container-lowest border border-surface-container text-on-surface text-body-md max-w-2xl leading-relaxed shadow-sm">
+                    👋 <strong>Hello! I am your Smart Campus AI Assistant.</strong><br/>
+                    I am connected in real-time to your academic digital twin, courses, faculty directories, and Supabase database.<br/>
+                    Ask me anything about attendance forecasts, fee deadlines, faculty locations, or certificate requests!
+                  </div>
+                </div>
+              </div>
+
+              <!-- Chat Input Area -->
+              <div class="flex items-center gap-3 pt-2">
+                <input id="full-chat-input" class="flex-1 px-5 py-3.5 bg-surface-container-low border border-surface-container rounded-2xl text-body-md text-on-surface placeholder:text-outline focus:outline-none focus:bg-surface-container-lowest focus:border-primary/50 transition-all shadow-inner" placeholder="Ask anything about courses, faculty, attendance, fees, or university policies..." type="text"/>
+                <button id="full-chat-send-btn" class="px-6 py-3.5 rounded-2xl bg-primary-container text-on-primary font-semibold flex items-center gap-2 hover:bg-primary transition-all shadow-sm active:scale-95" type="button">
+                  <span>Send</span>
+                  <span class="material-symbols-outlined text-[20px]">send</span>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- TAB 7: STUDENT DATASET DIRECTORY -->
+          <div id="tab-students-directory" class="tab-content space-y-6">
+            <div class="rounded-2xl bg-surface-container-lowest p-8 border border-surface-container/60 shadow-sm space-y-6">
+              <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+                <div>
+                  <h2 class="font-headline-xl text-2xl font-bold text-on-surface">Student Academic Dataset</h2>
+                  <p class="text-body-sm text-on-surface-variant">Complete database of all 20 enrolled students from Table 1 with credentials & academic standings</p>
+                </div>
+                <div class="flex items-center gap-3">
+                  <select id="student-filter-dept" class="px-3 py-2 bg-surface-container-low border border-surface-container rounded-xl text-body-sm font-medium text-on-surface focus:outline-none">
+                    <option value="">All Departments (6)</option>
+                    <option value="CSE">CSE</option>
+                    <option value="IT">IT</option>
+                    <option value="MECH">MECH</option>
+                    <option value="DE">DE</option>
+                    <option value="CIVIL">CIVIL</option>
+                    <option value="EEE">EEE</option>
+                  </select>
+                  <div class="relative">
+                    <span class="material-symbols-outlined absolute left-3 top-2.5 text-outline text-[18px]">search</span>
+                    <input id="student-search-input" class="pl-9 pr-4 py-2 bg-surface-container-low border border-surface-container rounded-xl text-body-sm placeholder:text-outline focus:outline-none" placeholder="Search by name, ID..." type="text"/>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Table -->
+              <div class="overflow-x-auto rounded-xl border border-surface-container/70">
+                <table class="w-full text-left border-collapse text-body-sm">
+                  <thead>
+                    <tr class="bg-surface-container-low text-on-surface-variant text-xs font-semibold border-b border-surface-container">
+                      <th class="p-3.5">Student ID</th>
+                      <th class="p-3.5">Full Name</th>
+                      <th class="p-3.5">Dept</th>
+                      <th class="p-3.5">Email Address</th>
+                      <th class="p-3.5">CGPA</th>
+                      <th class="p-3.5">Phone Number</th>
+                      <th class="p-3.5">Attendance</th>
+                      <th class="p-3.5 text-right">Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody id="students-table-body" class="divide-y divide-surface-container/50 font-body-sm"></tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <!-- TAB 8: STAFF DATASET DIRECTORY -->
+          <div id="tab-staff-directory" class="tab-content space-y-6">
+            <div class="rounded-2xl bg-surface-container-lowest p-8 border border-surface-container/60 shadow-sm space-y-6">
+              <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+                <div>
+                  <h2 class="font-headline-xl text-2xl font-bold text-on-surface">Faculty & Staff Dataset</h2>
+                  <p class="text-body-sm text-on-surface-variant">Official roster of 20 academic leaders, professors, and administrative deans</p>
+                </div>
+                <div class="flex items-center gap-3">
+                  <select id="staff-filter-dept" class="px-3 py-2 bg-surface-container-low border border-surface-container rounded-xl text-body-sm font-medium text-on-surface focus:outline-none">
+                    <option value="">All Departments</option>
+                    <option value="CSE">CSE</option>
+                    <option value="IT">IT</option>
+                    <option value="MECH">MECH</option>
+                    <option value="DE">DE</option>
+                    <option value="CIVIL">CIVIL</option>
+                    <option value="EEE">EEE</option>
+                    <option value="ADMIN">ADMIN</option>
+                  </select>
+                  <div class="relative">
+                    <span class="material-symbols-outlined absolute left-3 top-2.5 text-outline text-[18px]">search</span>
+                    <input id="staff-search-input" class="pl-9 pr-4 py-2 bg-surface-container-low border border-surface-container rounded-xl text-body-sm placeholder:text-outline focus:outline-none" placeholder="Search staff, cabin..." type="text"/>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Staff Cards Grid -->
+              <div id="staff-cards-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5"></div>
+            </div>
+          </div>
+
+          <!-- TAB 9: DETAILED ATTENDANCE -->
+          <div id="tab-attendance" class="tab-content space-y-6">
+            <div class="rounded-2xl bg-surface-container-lowest p-8 border border-surface-container/60 shadow-sm space-y-6">
+              <div class="flex items-center justify-between">
+                <div>
+                  <h2 class="font-headline-xl text-2xl font-bold text-on-surface">Detailed Attendance Ledger</h2>
+                  <p class="text-body-sm text-on-surface-variant">Official session-level compliance records and 75% examination eligibility analysis</p>
+                </div>
+                <div class="px-3 py-1.5 rounded-xl bg-surface-container-low border border-surface-container text-xs font-mono-data font-semibold">
+                  Cutoff Requirement: 75.0%
+                </div>
+              </div>
+              <div id="detailed-attendance-container" class="space-y-4"></div>
+            </div>
+          </div>
+
+          <!-- TAB 10: FEES & PAYMENTS -->
+          <div id="tab-fees" class="tab-content space-y-6">
+            <div class="rounded-2xl bg-surface-container-lowest p-8 border border-surface-container/60 shadow-sm space-y-6">
+              <div class="flex items-center justify-between">
+                <div>
+                  <h2 class="font-headline-xl text-2xl font-bold text-on-surface">Tuition & Institutional Fees</h2>
+                  <p class="text-body-sm text-on-surface-variant">Semester 8 financial dues, transaction records, and online settlement</p>
+                </div>
+                <button id="tab-pay-fees-btn" class="px-4 py-2 rounded-xl bg-primary-container text-on-primary text-label-md font-semibold hover:bg-primary transition-all">
+                  Pay Outstanding Fees
+                </button>
+              </div>
+
+              <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div class="p-5 rounded-2xl bg-surface-container-low/60 border border-surface-container space-y-1">
+                  <span class="text-xs font-semibold text-outline uppercase">Tuition Fee</span>
+                  <p class="font-headline-xl text-2xl font-bold text-on-surface">₹12,500.00</p>
+                  <span class="text-xs text-on-surface-variant">Core Academic Credits</span>
+                </div>
+                <div class="p-5 rounded-2xl bg-surface-container-low/60 border border-surface-container space-y-1">
+                  <span class="text-xs font-semibold text-outline uppercase">Laboratory & Computing</span>
+                  <p class="font-headline-xl text-2xl font-bold text-on-surface">₹5,000.00</p>
+                  <span class="text-xs text-emerald-600 font-semibold">Cleared / Paid</span>
+                </div>
+                <div class="p-5 rounded-2xl bg-surface-container-low/60 border border-surface-container space-y-1">
+                  <span class="text-xs font-semibold text-outline uppercase">Examination & Convocation</span>
+                  <p class="font-headline-xl text-2xl font-bold text-on-surface">₹2,500.00</p>
+                  <span class="text-xs text-emerald-600 font-semibold">Cleared / Paid</span>
+                </div>
+              </div>
+
+              <div class="p-6 rounded-2xl bg-surface-container-low border border-surface-container flex flex-col md:flex-row md:items-center justify-between gap-4">
+                <div>
+                  <p class="font-headline-sm text-base font-bold text-on-surface">Total Outstanding Balance</p>
+                  <p id="fee-page-balance-text" class="font-headline-xl text-3xl font-extrabold text-primary">₹12,500.00</p>
+                  <p class="text-xs text-outline mt-0.5">Due Date: November 15, 2026 (Zero late fee if paid before deadline)</p>
+                </div>
+                <button id="fee-page-action-btn" class="px-6 py-3 rounded-xl bg-primary-container text-on-primary font-semibold hover:bg-primary transition-all shadow-sm">
+                  Proceed to Payment Simulation
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- TAB 11: CGPA & MARKS -->
+          <div id="tab-cgpa-marks" class="tab-content space-y-6">
+            <div class="rounded-2xl bg-surface-container-lowest p-8 border border-surface-container/60 shadow-sm space-y-6">
+              <div>
+                <h2 class="font-headline-xl text-2xl font-bold text-on-surface">Academic Performance & Marks</h2>
+                <p class="text-body-sm text-on-surface-variant">Cumulative Grade Point Average (CGPA), SGPA semester milestones, and credit audit</p>
+              </div>
+
+              <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+                <div class="p-5 rounded-xl bg-surface-container-low border border-surface-container">
+                  <p class="text-xs font-semibold text-outline uppercase">Overall CGPA</p>
+                  <p id="cgpa-page-val" class="font-headline-xl text-3xl font-extrabold text-primary mt-1">8.74</p>
+                  <span class="text-xs text-secondary font-medium">Distinction Division</span>
+                </div>
+                <div class="p-5 rounded-xl bg-surface-container-low border border-surface-container">
+                  <p class="text-xs font-semibold text-outline uppercase">Total Credits Earned</p>
+                  <p class="font-headline-xl text-3xl font-extrabold text-on-surface mt-1">162 / 168</p>
+                  <span class="text-xs text-emerald-600 font-semibold">96.4% Completed</span>
+                </div>
+                <div class="p-5 rounded-xl bg-surface-container-low border border-surface-container">
+                  <p class="text-xs font-semibold text-outline uppercase">Current Semester</p>
+                  <p class="font-headline-xl text-3xl font-extrabold text-on-surface mt-1">Semester 8</p>
+                  <span class="text-xs text-outline">Graduation Term</span>
+                </div>
+                <div class="p-5 rounded-xl bg-surface-container-low border border-surface-container">
+                  <p class="text-xs font-semibold text-outline uppercase">Backlogs / Arrears</p>
+                  <p class="font-headline-xl text-3xl font-extrabold text-emerald-600 mt-1">0</p>
+                  <span class="text-xs text-emerald-600 font-semibold">Clean Record</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- TAB 12: CERTIFICATES -->
+          <div id="tab-certificates" class="tab-content space-y-6">
+            <div class="rounded-2xl bg-surface-container-lowest p-8 border border-surface-container/60 shadow-sm space-y-6">
+              <div class="flex items-center justify-between">
+                <div>
+                  <h2 class="font-headline-xl text-2xl font-bold text-on-surface">Certificate & Document Desk</h2>
+                  <p class="text-body-sm text-on-surface-variant">Apply for bonafide certificates, course completion letters, and track clearance status</p>
+                </div>
+                <button id="cert-page-apply-btn" class="px-4 py-2 rounded-xl bg-primary-container text-on-primary text-label-md font-semibold hover:bg-primary transition-all">
+                  + New Application
+                </button>
+              </div>
+
+              <!-- Active Requests List -->
+              <div class="space-y-3">
+                <h3 class="font-headline-sm text-base font-bold text-on-surface">Submitted Applications</h3>
+                <div id="cert-requests-list" class="space-y-3"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- TAB 13: DIGITAL TWIN MONITOR -->
+          <div id="tab-digital-twin" class="tab-content space-y-6">
+            <div class="rounded-2xl bg-surface-container-lowest p-8 border border-surface-container/60 shadow-sm space-y-6">
+              <div class="flex items-center justify-between">
+                <div class="flex items-center gap-3">
+                  <div class="w-10 h-10 rounded-xl bg-primary-fixed text-primary flex items-center justify-center">
+                    <span class="material-symbols-outlined text-[24px]">hub</span>
+                  </div>
+                  <div>
+                    <h2 class="font-headline-xl text-2xl font-bold text-on-surface">Student Academic Digital Twin</h2>
+                    <p class="text-body-sm text-on-surface-variant">Continuous ML predictive simulation of graduation trajectory, subject risk, and credit pacing</p>
+                  </div>
+                </div>
+                <span class="px-3 py-1 rounded-full bg-emerald-50 text-emerald-700 font-semibold text-xs">Autonomous Agent Active</span>
+              </div>
+
+              <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+                <div class="p-6 rounded-2xl bg-surface-container-low/60 border border-surface-container space-y-2">
+                  <span class="text-xs font-semibold text-outline uppercase">Composite Health Score</span>
+                  <p id="dt-health-score" class="font-headline-xl text-4xl font-extrabold text-on-surface">94 / 100</p>
+                  <p class="text-xs text-secondary">High probability of Distinction tier degree</p>
+                </div>
+                <div class="p-6 rounded-2xl bg-surface-container-low/60 border border-surface-container space-y-2">
+                  <span class="text-xs font-semibold text-outline uppercase">Examination Readiness</span>
+                  <p class="font-headline-xl text-4xl font-extrabold text-emerald-600">92%</p>
+                  <p class="text-xs text-outline">Internal assessment average: 44.5/50</p>
+                </div>
+                <div class="p-6 rounded-2xl bg-surface-container-low/60 border border-surface-container space-y-2">
+                  <span class="text-xs font-semibold text-outline uppercase">Institutional Risk Flag</span>
+                  <p class="font-headline-xl text-4xl font-extrabold text-amber-600">Low</p>
+                  <p class="text-xs text-outline">Watchlist for DBMS attendance (77.8%)</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- TAB 14: SETTINGS & SUPABASE CONFIG -->
+          <div id="tab-settings" class="tab-content space-y-6">
+            <div class="rounded-2xl bg-surface-container-lowest p-8 border border-surface-container/60 shadow-sm space-y-6">
+              <div class="flex items-center justify-between pb-4 border-b border-surface-container/60">
+                <div class="flex items-center gap-3">
+                  <div class="w-10 h-10 rounded-xl bg-primary-container text-on-primary flex items-center justify-center shadow-sm">
+                    <span class="material-symbols-outlined text-[24px]">cloud_sync</span>
+                  </div>
+                  <div>
+                    <h2 class="font-headline-xl text-2xl font-bold text-on-surface">Supabase Cloud Integration & Settings</h2>
+                    <p class="text-body-sm text-on-surface-variant">Live connection parameters for your Supabase backend project</p>
+                  </div>
+                </div>
+                <a href="/api/supabase-schema" download="supabase_schema.sql" class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-surface-container-low text-primary hover:bg-surface-container font-label-md text-xs font-semibold border border-surface-container transition-all">
+                  <span class="material-symbols-outlined text-[16px]">download</span>
+                  <span>Download SQL Schema</span>
+                </a>
+              </div>
+
+              <!-- Connection Config -->
+              <div class="p-6 rounded-2xl bg-surface-container-low/60 border border-surface-container space-y-4">
+                <div class="space-y-1">
+                  <label class="text-xs font-semibold text-outline uppercase">Supabase Project URL</label>
+                  <div class="flex items-center gap-2">
+                    <input id="supabase-url-input" class="flex-1 px-4 py-2.5 bg-surface-container-lowest border border-surface-container rounded-xl font-mono-data text-xs text-on-surface" value="https://aqfqdjhddfvyprpwccyp.supabase.co" readonly type="text"/>
+                    <span class="px-2.5 py-1 rounded-lg bg-emerald-50 text-emerald-700 text-xs font-semibold">Configured</span>
+                  </div>
+                </div>
+
+                <div class="space-y-1">
+                  <label class="text-xs font-semibold text-outline uppercase">Supabase Anon Public API Key</label>
+                  <div class="flex items-center gap-2">
+                    <input id="supabase-key-input" class="flex-1 px-4 py-2.5 bg-surface-container-lowest border border-surface-container rounded-xl font-mono-data text-xs text-on-surface focus:outline-none focus:border-primary/50" placeholder="Paste your Supabase anon public key here" type="password"/>
+                    <button id="test-supabase-btn" class="px-4 py-2.5 rounded-xl bg-primary-container text-on-primary font-label-md text-xs font-semibold hover:bg-primary transition-all">
+                      Test Connection
+                    </button>
+                  </div>
+                  <p class="text-xs text-outline pt-1">
+                    💡 <em>The platform operates automatically in hybrid mode: if no remote key is entered, it uses the local REST API and pre-loaded datasets seamlessly!</em>
+                  </p>
+                </div>
+
+                <div id="supabase-connection-result" class="hidden p-3.5 rounded-xl text-xs font-mono-data"></div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <!-- ==================== MODALS ==================== -->
+  
+  <!-- MODAL 1: ASK AI AGENT -->
+  <div class="fixed inset-0 z-50 hidden flex items-center justify-center bg-inverse-surface/40 backdrop-blur-sm p-4" id="ai-agent-modal">
+    <div class="w-full max-w-xl rounded-2xl bg-surface-container-lowest p-6 shadow-2xl flex flex-col gap-4 border border-surface-container">
+      <div class="flex items-center justify-between pb-2 border-b border-surface-container">
+        <div class="flex items-center gap-2.5">
+          <div class="w-8 h-8 rounded-lg bg-primary-container text-on-primary flex items-center justify-center">
+            <span class="material-symbols-outlined text-[18px]">neurology</span>
+          </div>
+          <div>
+            <h3 class="font-headline-sm text-base font-bold text-on-surface">Academic AI Assistant</h3>
+            <p class="text-xs text-outline">Continuous Twin Intelligence</p>
+          </div>
+        </div>
+        <button class="p-1 rounded-lg text-on-surface-variant hover:bg-surface-container-low" id="close-ai-modal" type="button">
+          <span class="material-symbols-outlined text-[20px]">close</span>
+        </button>
+      </div>
+      
+      <div class="space-y-3 max-h-80 overflow-y-auto pr-1" id="ai-modal-thread">
+        <div class="p-3 rounded-xl bg-surface-container-low text-on-surface text-body-sm leading-relaxed">
+          👋 Hi! I am monitoring your 8th semester credits, attendance records, and university deadlines. What would you like to explore today?
+        </div>
+      </div>
+
+      <div class="flex items-center gap-2 pt-2 border-t border-surface-container">
+        <input class="flex-1 px-4 py-2.5 bg-surface-container-low border border-surface-container rounded-xl text-body-sm text-on-surface placeholder:text-outline focus:outline-none focus:border-primary/50" id="ai-prompt-input" placeholder="e.g. How many classes can I skip in DBMS?" type="text"/>
+        <button class="px-4 py-2.5 rounded-xl bg-primary-container text-on-primary text-label-md font-semibold flex items-center gap-1 hover:bg-primary transition-colors shadow-sm" id="send-ai-query" type="button">
+          <span class="material-symbols-outlined text-[18px]">send</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL 2: DOCUMENT / CERTIFICATE APPLICATION -->
+  <div class="fixed inset-0 z-50 hidden flex items-center justify-center bg-inverse-surface/40 backdrop-blur-sm p-4" id="upload-modal">
+    <div class="w-full max-w-lg rounded-2xl bg-surface-container-lowest p-6 shadow-2xl flex flex-col gap-5 border border-surface-container">
+      <div class="flex items-center justify-between">
+        <h3 class="font-headline-sm text-base font-bold text-on-surface">Apply for Certificate</h3>
+        <button class="p-1 rounded-lg text-on-surface-variant hover:bg-surface-container-low" id="close-upload-modal" type="button">
+          <span class="material-symbols-outlined text-[20px]">close</span>
+        </button>
+      </div>
+      <div class="space-y-3">
+        <label class="text-xs font-semibold text-outline uppercase">Certificate Type</label>
+        <select id="cert-select" class="w-full px-3 py-2.5 bg-surface-container-low border border-surface-container rounded-xl text-body-sm text-on-surface focus:outline-none">
+          <option>Bonafide Certificate (Passport / Visa)</option>
+          <option>Provisional Degree Certificate</option>
+          <option>Course Completion Letter</option>
+          <option>Fee Structure Estimate</option>
+          <option>Grade Verification Transcript</option>
+        </select>
+      </div>
+      <div class="space-y-1">
+        <label class="text-xs font-semibold text-outline uppercase">Purpose of Application</label>
+        <input id="cert-purpose-input" class="w-full px-3 py-2 bg-surface-container-low border border-surface-container rounded-xl text-body-sm text-on-surface focus:outline-none" placeholder="e.g. Visa Interview, Bank Loan, Higher Studies" type="text"/>
+      </div>
+      <div class="p-6 rounded-xl bg-surface-container-low/70 border border-dashed border-outline/40 text-center flex flex-col items-center justify-center gap-2 cursor-pointer hover:bg-surface-container-low transition-colors">
+        <span class="material-symbols-outlined text-secondary text-[32px]">upload_file</span>
+        <p class="text-body-sm font-semibold text-on-surface">Upload Supporting Document (Optional)</p>
+        <p class="text-xs text-outline">PDF, JPG, PNG up to 10MB</p>
+      </div>
+      <div class="flex justify-end gap-2.5 pt-2">
+        <button class="px-4 py-2 rounded-xl bg-surface-container-low text-on-surface text-label-md font-semibold hover:bg-surface-container transition-colors" id="cancel-upload" type="button">Cancel</button>
+        <button class="px-4 py-2 rounded-xl bg-primary-container text-on-primary text-label-md font-semibold hover:bg-primary transition-colors shadow-sm" id="submit-upload" type="button">Submit Application</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL 3: FEE PAYMENT MODAL -->
+  <div class="fixed inset-0 z-50 hidden flex items-center justify-center bg-inverse-surface/40 backdrop-blur-sm p-4" id="fee-modal">
+    <div class="w-full max-w-md rounded-2xl bg-surface-container-lowest p-6 shadow-2xl flex flex-col gap-5 border border-surface-container">
+      <div class="flex items-center justify-between">
+        <h3 class="font-headline-sm text-base font-bold text-on-surface">Tuition Payment Simulator</h3>
+        <button class="p-1 rounded-lg text-on-surface-variant hover:bg-surface-container-low" id="close-fee-modal" type="button">
+          <span class="material-symbols-outlined text-[20px]">close</span>
+        </button>
+      </div>
+      <div class="bg-surface-container-low/70 p-4 rounded-xl space-y-2 border border-surface-container">
+        <div class="flex justify-between text-body-sm">
+          <span class="text-on-surface-variant">Semester 8 Balance</span>
+          <span id="modal-fee-balance" class="font-mono-data font-semibold text-on-surface">₹12,500.00</span>
+        </div>
+        <div class="flex justify-between text-body-sm">
+          <span class="text-on-surface-variant">Convenience Fee</span>
+          <span class="font-mono-data text-emerald-600 font-semibold">₹0.00</span>
+        </div>
+        <div class="pt-2 border-t border-surface-container flex justify-between font-headline-sm text-base">
+          <span class="font-bold text-on-surface">Total Payable</span>
+          <span id="modal-fee-total" class="font-extrabold text-primary font-mono-data">₹12,500.00</span>
+        </div>
+      </div>
+      <div class="space-y-2">
+        <label class="text-xs font-semibold text-outline uppercase">Payment Method</label>
+        <div class="p-3 rounded-xl bg-surface-container-low border border-primary/40 flex items-center justify-between">
+          <div class="flex items-center gap-2">
+            <span class="material-symbols-outlined text-primary text-[20px]">account_balance_wallet</span>
+            <span class="text-body-sm font-semibold text-on-surface">UPI / Instant Net Banking</span>
+          </div>
+          <span class="material-symbols-outlined text-primary text-[20px]">check_circle</span>
+        </div>
+      </div>
+      <button class="w-full py-2.5 rounded-xl bg-primary-container text-on-primary font-label-md text-label-md font-semibold hover:bg-primary transition-colors shadow-sm" id="confirm-fee-pay" type="button">
+        Confirm & Pay Now
+      </button>
+    </div>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div class="fixed bottom-6 right-6 z-50 flex flex-col gap-2 pointer-events-none" id="toast-container"></div>
+
+  <!-- App Client Scripts -->
+  <script src="/js/app.js?v=2.6.0"></script>
+</body>
+</html>

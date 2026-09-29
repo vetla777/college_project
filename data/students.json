@@ -1,0 +1,1454 @@
+[
+  {
+    "student_id": "23331a42001",
+    "password": "student@123",
+    "full_name": "Aarav Sharma",
+    "department": "CSE",
+    "email": "aarav.sharma1@college.edu",
+    "cgpa": 8.74,
+    "phone": "+91-9874523101",
+    "semester": 8,
+    "year": 4,
+    "attendance_pct": 91.0,
+    "fee_balance": 0.0,
+    "fee_status": "Paid",
+    "digital_twin_score": 93,
+    "subjects": [
+      {
+        "code": "CS801",
+        "name": "Deep Learning Architecture",
+        "attended": 38,
+        "total": 41,
+        "pct": 92.6
+      },
+      {
+        "code": "CS802",
+        "name": "Natural Language Processing",
+        "attended": 34,
+        "total": 38,
+        "pct": 89.4
+      },
+      {
+        "code": "CS803",
+        "name": "Database Management Systems",
+        "attended": 28,
+        "total": 36,
+        "pct": 77.8
+      },
+      {
+        "code": "CS804",
+        "name": "Distributed Cloud Systems",
+        "attended": 32,
+        "total": 35,
+        "pct": 91.4
+      }
+    ],
+    "active_requests": [
+      {
+        "request_id": "REQ-09291745",
+        "certificate_type": "Bonafide Certificate (Passport / Visa)",
+        "status": "Approved",
+        "applied_date": "2026-09-29",
+        "purpose": "Buss Pass3",
+        "remarks": "Actioned by Academic Authority: Approved on 2026-09-29"
+      },
+      {
+        "request_id": "REQ-09291740",
+        "certificate_type": "Bonafide Certificate (Passport / Visa)",
+        "status": "Approved",
+        "applied_date": "2026-09-29",
+        "purpose": "Buss Pass3",
+        "remarks": "Actioned by Academic Authority: Approved on 2026-09-29"
+      },
+      {
+        "request_id": "REQ-09291719",
+        "certificate_type": "Bonafide Certificate (Passport / Visa)",
+        "status": "Approved",
+        "applied_date": "2026-09-29",
+        "purpose": "Buss Pass",
+        "remarks": "Actioned by Academic Authority: Approved on 2026-09-29"
+      },
+      {
+        "request_id": "REQ-1000",
+        "certificate_type": "Bonafide Certificate (Passport / Visa)",
+        "status": "Approved",
+        "applied_date": "2026-09-14",
+        "remarks": "Actioned by Academic Authority: Approved on 2026-09-29"
+      }
+    ],
+    "recent_activities": [
+      {
+        "title": "Fee Payment Cleared (\u20b912,500.00)",
+        "description": "Transaction via UPI / Net Banking verified \u2022 Receipt #REC-2609291807",
+        "time_label": "Just now",
+        "icon": "receipt_long",
+        "color": "blue"
+      },
+      {
+        "title": "Applied for Bonafide Certificate (Passport / Visa)",
+        "description": "Request #REQ-09291745 submitted for review",
+        "time_label": "Just now",
+        "icon": "assignment_turned_in",
+        "color": "purple"
+      },
+      {
+        "title": "Applied for Bonafide Certificate (Passport / Visa)",
+        "description": "Request #REQ-09291740 submitted for review",
+        "time_label": "Just now",
+        "icon": "assignment_turned_in",
+        "color": "purple"
+      },
+      {
+        "title": "Applied for Bonafide Certificate (Passport / Visa)",
+        "description": "Request #REQ-09291719 submitted for review",
+        "time_label": "Just now",
+        "icon": "assignment_turned_in",
+        "color": "purple"
+      },
+      {
+        "title": "Biometric Attendance Recorded",
+        "description": "CSE Lab 404 \u2022 Console RFID check verified",
+        "time_label": "Today, 10:42 AM",
+        "icon": "check_circle",
+        "color": "emerald"
+      },
+      {
+        "title": "Academic Twin Synchronized",
+        "description": "Semester 8 SGPA model confidence: 93%",
+        "time_label": "Yesterday",
+        "icon": "hub",
+        "color": "purple"
+      }
+    ]
+  },
+  {
+    "student_id": "23331a42002",
+    "password": "student@123",
+    "full_name": "Priya Patel",
+    "department": "IT",
+    "email": "priya.patel2@college.edu",
+    "cgpa": 9.12,
+    "phone": "+91-8745129630",
+    "semester": 8,
+    "year": 4,
+    "attendance_pct": 94.3,
+    "fee_balance": 0.0,
+    "fee_status": "Paid",
+    "digital_twin_score": 98,
+    "subjects": [
+      {
+        "code": "IT801",
+        "name": "Cloud Infrastructure & DevOps",
+        "attended": 39,
+        "total": 40,
+        "pct": 97.5
+      },
+      {
+        "code": "IT802",
+        "name": "Modern Web Architectures",
+        "attended": 35,
+        "total": 38,
+        "pct": 92.1
+      },
+      {
+        "code": "IT803",
+        "name": "Cybersecurity & Ethical Hacking",
+        "attended": 31,
+        "total": 36,
+        "pct": 86.1
+      },
+      {
+        "code": "IT804",
+        "name": "Big Data Analytics Engine",
+        "attended": 33,
+        "total": 35,
+        "pct": 94.3
+      }
+    ],
+    "active_requests": [
+      {
+        "request_id": "REQ-1001",
+        "certificate_type": "Bonafide Certificate (Passport / Visa)",
+        "status": "Approved",
+        "applied_date": "2026-09-14",
+        "remarks": "Actioned by Academic Authority: Approved on 2026-09-29"
+      }
+    ],
+    "recent_activities": [
+      {
+        "title": "Biometric Attendance Recorded",
+        "description": "IT Lab 404 \u2022 Console RFID check verified",
+        "time_label": "Today, 10:42 AM",
+        "icon": "check_circle",
+        "color": "emerald"
+      },
+      {
+        "title": "Academic Twin Synchronized",
+        "description": "Semester 8 SGPA model confidence: 98%",
+        "time_label": "Yesterday",
+        "icon": "hub",
+        "color": "purple"
+      }
+    ]
+  },
+  {
+    "student_id": "23331a42003",
+    "password": "student@123",
+    "full_name": "Rohan Reddy",
+    "department": "MECH",
+    "email": "rohan.reddy3@college.edu",
+    "cgpa": 7.45,
+    "phone": "+91-7896541230",
+    "semester": 8,
+    "year": 4,
+    "attendance_pct": 80.1,
+    "fee_balance": 18500.0,
+    "fee_status": "Pending",
+    "digital_twin_score": 77,
+    "subjects": [
+      {
+        "code": "ME801",
+        "name": "Robotics & Mechatronics",
+        "attended": 33,
+        "total": 40,
+        "pct": 82.5
+      },
+      {
+        "code": "ME802",
+        "name": "Finite Element Method",
+        "attended": 29,
+        "total": 38,
+        "pct": 76.3
+      },
+      {
+        "code": "ME803",
+        "name": "Computational Fluid Dynamics",
+        "attended": 34,
+        "total": 38,
+        "pct": 89.5
+      },
+      {
+        "code": "ME804",
+        "name": "Automotive Powertrains",
+        "attended": 30,
+        "total": 35,
+        "pct": 85.7
+      }
+    ],
+    "active_requests": [
+      {
+        "request_id": "REQ-1002",
+        "certificate_type": "Bonafide Certificate (Passport / Visa)",
+        "status": "Approved",
+        "applied_date": "2026-09-14",
+        "remarks": "Actioned by Academic Authority: Approved on 2026-09-29"
+      }
+    ],
+    "recent_activities": [
+      {
+        "title": "Biometric Attendance Recorded",
+        "description": "MECH Lab 404 \u2022 Console RFID check verified",
+        "time_label": "Today, 10:42 AM",
+        "icon": "check_circle",
+        "color": "emerald"
+      },
+      {
+        "title": "Academic Twin Synchronized",
+        "description": "Semester 8 SGPA model confidence: 77%",
+        "time_label": "Yesterday",
+        "icon": "hub",
+        "color": "purple"
+      }
+    ]
+  },
+  {
+    "student_id": "23331a42004",
+    "password": "student@123",
+    "full_name": "Sneha Nair",
+    "department": "DE",
+    "email": "sneha.nair4@college.edu",
+    "cgpa": 8.89,
+    "phone": "+91-9658741230",
+    "semester": 8,
+    "year": 4,
+    "attendance_pct": 92.3,
+    "fee_balance": 12500.0,
+    "fee_status": "Pending",
+    "digital_twin_score": 95,
+    "subjects": [
+      {
+        "code": "DE801",
+        "name": "IoT & Sensor Systems Design",
+        "attended": 35,
+        "total": 38,
+        "pct": 92.1
+      },
+      {
+        "code": "DE802",
+        "name": "Rapid Prototyping & CAD",
+        "attended": 32,
+        "total": 36,
+        "pct": 88.9
+      },
+      {
+        "code": "DE803",
+        "name": "Human-Centered Product Design",
+        "attended": 34,
+        "total": 38,
+        "pct": 89.5
+      },
+      {
+        "code": "DE804",
+        "name": "Embedded Firmware & RTOS",
+        "attended": 30,
+        "total": 36,
+        "pct": 83.3
+      }
+    ],
+    "active_requests": [
+      {
+        "request_id": "REQ-1003",
+        "certificate_type": "Bonafide Certificate (Passport / Visa)",
+        "status": "Approved",
+        "applied_date": "2026-09-14",
+        "remarks": "Actioned by Academic Authority: Approved on 2026-09-29"
+      }
+    ],
+    "recent_activities": [
+      {
+        "title": "Biometric Attendance Recorded",
+        "description": "DE Lab 404 \u2022 Console RFID check verified",
+        "time_label": "Today, 10:42 AM",
+        "icon": "check_circle",
+        "color": "emerald"
+      },
+      {
+        "title": "Academic Twin Synchronized",
+        "description": "Semester 8 SGPA model confidence: 95%",
+        "time_label": "Yesterday",
+        "icon": "hub",
+        "color": "purple"
+      }
+    ]
+  },
+  {
+    "student_id": "23331a42005",
+    "password": "student@123",
+    "full_name": "Vikram Gupta",
+    "department": "CIVIL",
+    "email": "vikram.gupta5@college.edu",
+    "cgpa": 6.82,
+    "phone": "+91-8521479630",
+    "semester": 8,
+    "year": 4,
+    "attendance_pct": 74.7,
+    "fee_balance": 18500.0,
+    "fee_status": "Pending",
+    "digital_twin_score": 69,
+    "subjects": [
+      {
+        "code": "CV801",
+        "name": "Advanced Structural Dynamics",
+        "attended": 29,
+        "total": 38,
+        "pct": 76.3
+      },
+      {
+        "code": "CV802",
+        "name": "Earthquake Resistant Design",
+        "attended": 31,
+        "total": 38,
+        "pct": 81.6
+      },
+      {
+        "code": "CV803",
+        "name": "Geotechnical Site Exploration",
+        "attended": 33,
+        "total": 38,
+        "pct": 86.8
+      },
+      {
+        "code": "CV804",
+        "name": "Environmental Impact Analysis",
+        "attended": 35,
+        "total": 40,
+        "pct": 87.5
+      }
+    ],
+    "active_requests": [
+      {
+        "request_id": "REQ-1004",
+        "certificate_type": "Bonafide Certificate (Passport / Visa)",
+        "status": "Approved",
+        "applied_date": "2026-09-14",
+        "remarks": "Actioned by Academic Authority: Approved on 2026-09-29"
+      }
+    ],
+    "recent_activities": [
+      {
+        "title": "Biometric Attendance Recorded",
+        "description": "CIVIL Lab 404 \u2022 Console RFID check verified",
+        "time_label": "Today, 10:42 AM",
+        "icon": "check_circle",
+        "color": "emerald"
+      },
+      {
+        "title": "Academic Twin Synchronized",
+        "description": "Semester 8 SGPA model confidence: 69%",
+        "time_label": "Yesterday",
+        "icon": "hub",
+        "color": "purple"
+      }
+    ]
+  },
+  {
+    "student_id": "23331a42006",
+    "password": "student@123",
+    "full_name": "Ananya Rao",
+    "department": "EEE",
+    "email": "ananya.rao6@college.edu",
+    "cgpa": 9.4,
+    "phone": "+91-7412589630",
+    "semester": 8,
+    "year": 4,
+    "attendance_pct": 96.7,
+    "fee_balance": 0.0,
+    "fee_status": "Paid",
+    "digital_twin_score": 100,
+    "subjects": [
+      {
+        "code": "EE801",
+        "name": "Smart Grid & Power Quality",
+        "attended": 38,
+        "total": 40,
+        "pct": 95.0
+      },
+      {
+        "code": "EE802",
+        "name": "Electric Vehicle Drives & Batteries",
+        "attended": 36,
+        "total": 38,
+        "pct": 94.7
+      },
+      {
+        "code": "EE803",
+        "name": "High Voltage Engineering",
+        "attended": 32,
+        "total": 36,
+        "pct": 88.9
+      },
+      {
+        "code": "EE804",
+        "name": "Industrial Automation & PLC",
+        "attended": 34,
+        "total": 36,
+        "pct": 94.4
+      }
+    ],
+    "active_requests": [
+      {
+        "request_id": "REQ-1005",
+        "certificate_type": "Bonafide Certificate (Passport / Visa)",
+        "status": "Approved",
+        "applied_date": "2026-09-14",
+        "remarks": "Actioned by Academic Authority: Approved on 2026-09-29"
+      }
+    ],
+    "recent_activities": [
+      {
+        "title": "Biometric Attendance Recorded",
+        "description": "EEE Lab 404 \u2022 Console RFID check verified",
+        "time_label": "Today, 10:42 AM",
+        "icon": "check_circle",
+        "color": "emerald"
+      },
+      {
+        "title": "Academic Twin Synchronized",
+        "description": "Semester 8 SGPA model confidence: 100%",
+        "time_label": "Yesterday",
+        "icon": "hub",
+        "color": "purple"
+      }
+    ]
+  },
+  {
+    "student_id": "23331a42007",
+    "password": "student@123",
+    "full_name": "Amit Singh",
+    "department": "CSE",
+    "email": "amit.singh7@college.edu",
+    "cgpa": 7.91,
+    "phone": "+91-9123456780",
+    "semester": 8,
+    "year": 4,
+    "attendance_pct": 84.0,
+    "fee_balance": 12500.0,
+    "fee_status": "Pending",
+    "digital_twin_score": 83,
+    "subjects": [
+      {
+        "code": "CS801",
+        "name": "Deep Learning Architecture",
+        "attended": 38,
+        "total": 41,
+        "pct": 92.6
+      },
+      {
+        "code": "CS802",
+        "name": "Natural Language Processing",
+        "attended": 34,
+        "total": 38,
+        "pct": 89.4
+      },
+      {
+        "code": "CS803",
+        "name": "Database Management Systems",
+        "attended": 28,
+        "total": 36,
+        "pct": 77.8
+      },
+      {
+        "code": "CS804",
+        "name": "Distributed Cloud Systems",
+        "attended": 32,
+        "total": 35,
+        "pct": 91.4
+      }
+    ],
+    "active_requests": [
+      {
+        "request_id": "REQ-1006",
+        "certificate_type": "Bonafide Certificate (Passport / Visa)",
+        "status": "Approved",
+        "applied_date": "2026-09-14",
+        "remarks": "Actioned by Academic Authority: Approved on 2026-09-29"
+      }
+    ],
+    "recent_activities": [
+      {
+        "title": "Biometric Attendance Recorded",
+        "description": "CSE Lab 404 \u2022 Console RFID check verified",
+        "time_label": "Today, 10:42 AM",
+        "icon": "check_circle",
+        "color": "emerald"
+      },
+      {
+        "title": "Academic Twin Synchronized",
+        "description": "Semester 8 SGPA model confidence: 83%",
+        "time_label": "Yesterday",
+        "icon": "hub",
+        "color": "purple"
+      }
+    ]
+  },
+  {
+    "student_id": "23331a42008",
+    "password": "student@123",
+    "full_name": "Karthik Verma",
+    "department": "IT",
+    "email": "karthik.verma8@college.edu",
+    "cgpa": 8.15,
+    "phone": "+91-8965412307",
+    "semester": 8,
+    "year": 4,
+    "attendance_pct": 86.0,
+    "fee_balance": 12500.0,
+    "fee_status": "Pending",
+    "digital_twin_score": 86,
+    "subjects": [
+      {
+        "code": "IT801",
+        "name": "Cloud Infrastructure & DevOps",
+        "attended": 39,
+        "total": 40,
+        "pct": 97.5
+      },
+      {
+        "code": "IT802",
+        "name": "Modern Web Architectures",
+        "attended": 35,
+        "total": 38,
+        "pct": 92.1
+      },
+      {
+        "code": "IT803",
+        "name": "Cybersecurity & Ethical Hacking",
+        "attended": 31,
+        "total": 36,
+        "pct": 86.1
+      },
+      {
+        "code": "IT804",
+        "name": "Big Data Analytics Engine",
+        "attended": 33,
+        "total": 35,
+        "pct": 94.3
+      }
+    ],
+    "active_requests": [
+      {
+        "request_id": "REQ-1007",
+        "certificate_type": "Bonafide Certificate (Passport / Visa)",
+        "status": "Approved",
+        "applied_date": "2026-09-14",
+        "remarks": "Actioned by Academic Authority: Approved on 2026-09-29"
+      }
+    ],
+    "recent_activities": [
+      {
+        "title": "Biometric Attendance Recorded",
+        "description": "IT Lab 404 \u2022 Console RFID check verified",
+        "time_label": "Today, 10:42 AM",
+        "icon": "check_circle",
+        "color": "emerald"
+      },
+      {
+        "title": "Academic Twin Synchronized",
+        "description": "Semester 8 SGPA model confidence: 86%",
+        "time_label": "Yesterday",
+        "icon": "hub",
+        "color": "purple"
+      }
+    ]
+  },
+  {
+    "student_id": "23331a42009",
+    "password": "student@123",
+    "full_name": "Pooja Joshi",
+    "department": "MECH",
+    "email": "pooja.joshi9@college.edu",
+    "cgpa": 7.2,
+    "phone": "+91-7854123690",
+    "semester": 8,
+    "year": 4,
+    "attendance_pct": 78.0,
+    "fee_balance": 18500.0,
+    "fee_status": "Pending",
+    "digital_twin_score": 74,
+    "subjects": [
+      {
+        "code": "ME801",
+        "name": "Robotics & Mechatronics",
+        "attended": 33,
+        "total": 40,
+        "pct": 82.5
+      },
+      {
+        "code": "ME802",
+        "name": "Finite Element Method",
+        "attended": 29,
+        "total": 38,
+        "pct": 76.3
+      },
+      {
+        "code": "ME803",
+        "name": "Computational Fluid Dynamics",
+        "attended": 34,
+        "total": 38,
+        "pct": 89.5
+      },
+      {
+        "code": "ME804",
+        "name": "Automotive Powertrains",
+        "attended": 30,
+        "total": 35,
+        "pct": 85.7
+      }
+    ],
+    "active_requests": [
+      {
+        "request_id": "REQ-1008",
+        "certificate_type": "Bonafide Certificate (Passport / Visa)",
+        "status": "Approved",
+        "applied_date": "2026-09-14",
+        "remarks": "Actioned by Academic Authority: Approved on 2026-09-29"
+      }
+    ],
+    "recent_activities": [
+      {
+        "title": "Biometric Attendance Recorded",
+        "description": "MECH Lab 404 \u2022 Console RFID check verified",
+        "time_label": "Today, 10:42 AM",
+        "icon": "check_circle",
+        "color": "emerald"
+      },
+      {
+        "title": "Academic Twin Synchronized",
+        "description": "Semester 8 SGPA model confidence: 74%",
+        "time_label": "Yesterday",
+        "icon": "hub",
+        "color": "purple"
+      }
+    ]
+  },
+  {
+    "student_id": "23331a42010",
+    "password": "student@123",
+    "full_name": "Rahul Mishra",
+    "department": "CIVIL",
+    "email": "rahul.mishra10@college.edu",
+    "cgpa": 8.05,
+    "phone": "+91-6301245789",
+    "semester": 8,
+    "year": 4,
+    "attendance_pct": 85.2,
+    "fee_balance": 12500.0,
+    "fee_status": "Pending",
+    "digital_twin_score": 85,
+    "subjects": [
+      {
+        "code": "CV801",
+        "name": "Advanced Structural Dynamics",
+        "attended": 29,
+        "total": 38,
+        "pct": 76.3
+      },
+      {
+        "code": "CV802",
+        "name": "Earthquake Resistant Design",
+        "attended": 31,
+        "total": 38,
+        "pct": 81.6
+      },
+      {
+        "code": "CV803",
+        "name": "Geotechnical Site Exploration",
+        "attended": 33,
+        "total": 38,
+        "pct": 86.8
+      },
+      {
+        "code": "CV804",
+        "name": "Environmental Impact Analysis",
+        "attended": 35,
+        "total": 40,
+        "pct": 87.5
+      }
+    ],
+    "active_requests": [
+      {
+        "request_id": "REQ-1009",
+        "certificate_type": "Bonafide Certificate (Passport / Visa)",
+        "status": "Approved",
+        "applied_date": "2026-09-14",
+        "remarks": "Actioned by Academic Authority: Approved on 2026-09-29"
+      }
+    ],
+    "recent_activities": [
+      {
+        "title": "Biometric Attendance Recorded",
+        "description": "CIVIL Lab 404 \u2022 Console RFID check verified",
+        "time_label": "Today, 10:42 AM",
+        "icon": "check_circle",
+        "color": "emerald"
+      },
+      {
+        "title": "Academic Twin Synchronized",
+        "description": "Semester 8 SGPA model confidence: 85%",
+        "time_label": "Yesterday",
+        "icon": "hub",
+        "color": "purple"
+      }
+    ]
+  },
+  {
+    "student_id": "23331a42011",
+    "password": "student@123",
+    "full_name": "Divya Kumar",
+    "department": "EEE",
+    "email": "divya.kumar11@college.edu",
+    "cgpa": 8.9,
+    "phone": "+91-9988776655",
+    "semester": 8,
+    "year": 4,
+    "attendance_pct": 92.4,
+    "fee_balance": 12500.0,
+    "fee_status": "Pending",
+    "digital_twin_score": 95,
+    "subjects": [
+      {
+        "code": "EE801",
+        "name": "Smart Grid & Power Quality",
+        "attended": 38,
+        "total": 40,
+        "pct": 95.0
+      },
+      {
+        "code": "EE802",
+        "name": "Electric Vehicle Drives & Batteries",
+        "attended": 36,
+        "total": 38,
+        "pct": 94.7
+      },
+      {
+        "code": "EE803",
+        "name": "High Voltage Engineering",
+        "attended": 32,
+        "total": 36,
+        "pct": 88.9
+      },
+      {
+        "code": "EE804",
+        "name": "Industrial Automation & PLC",
+        "attended": 34,
+        "total": 36,
+        "pct": 94.4
+      }
+    ],
+    "active_requests": [
+      {
+        "request_id": "REQ-1010",
+        "certificate_type": "Bonafide Certificate (Passport / Visa)",
+        "status": "Approved",
+        "applied_date": "2026-09-14",
+        "remarks": "Actioned by Academic Authority: Approved on 2026-09-29"
+      }
+    ],
+    "recent_activities": [
+      {
+        "title": "Biometric Attendance Recorded",
+        "description": "EEE Lab 404 \u2022 Console RFID check verified",
+        "time_label": "Today, 10:42 AM",
+        "icon": "check_circle",
+        "color": "emerald"
+      },
+      {
+        "title": "Academic Twin Synchronized",
+        "description": "Semester 8 SGPA model confidence: 95%",
+        "time_label": "Yesterday",
+        "icon": "hub",
+        "color": "purple"
+      }
+    ]
+  },
+  {
+    "student_id": "23331a42012",
+    "password": "student@123",
+    "full_name": "Suresh Das",
+    "department": "DE",
+    "email": "suresh.das12@college.edu",
+    "cgpa": 6.75,
+    "phone": "+91-9123487650",
+    "semester": 8,
+    "year": 4,
+    "attendance_pct": 74.1,
+    "fee_balance": 18500.0,
+    "fee_status": "Pending",
+    "digital_twin_score": 68,
+    "subjects": [
+      {
+        "code": "DE801",
+        "name": "IoT & Sensor Systems Design",
+        "attended": 35,
+        "total": 38,
+        "pct": 92.1
+      },
+      {
+        "code": "DE802",
+        "name": "Rapid Prototyping & CAD",
+        "attended": 32,
+        "total": 36,
+        "pct": 88.9
+      },
+      {
+        "code": "DE803",
+        "name": "Human-Centered Product Design",
+        "attended": 34,
+        "total": 38,
+        "pct": 89.5
+      },
+      {
+        "code": "DE804",
+        "name": "Embedded Firmware & RTOS",
+        "attended": 30,
+        "total": 36,
+        "pct": 83.3
+      }
+    ],
+    "active_requests": [
+      {
+        "request_id": "REQ-1011",
+        "certificate_type": "Bonafide Certificate (Passport / Visa)",
+        "status": "Approved",
+        "applied_date": "2026-09-14",
+        "remarks": "Actioned by Academic Authority: Approved on 2026-09-29"
+      }
+    ],
+    "recent_activities": [
+      {
+        "title": "Biometric Attendance Recorded",
+        "description": "DE Lab 404 \u2022 Console RFID check verified",
+        "time_label": "Today, 10:42 AM",
+        "icon": "check_circle",
+        "color": "emerald"
+      },
+      {
+        "title": "Academic Twin Synchronized",
+        "description": "Semester 8 SGPA model confidence: 68%",
+        "time_label": "Yesterday",
+        "icon": "hub",
+        "color": "purple"
+      }
+    ]
+  },
+  {
+    "student_id": "23331a42013",
+    "password": "student@123",
+    "full_name": "Meera Kulkarni",
+    "department": "CSE",
+    "email": "meera.kulkarni13@college.edu",
+    "cgpa": 9.6,
+    "phone": "+91-9456712340",
+    "semester": 8,
+    "year": 4,
+    "attendance_pct": 98.3,
+    "fee_balance": 0.0,
+    "fee_status": "Paid",
+    "digital_twin_score": 100,
+    "subjects": [
+      {
+        "code": "CS801",
+        "name": "Deep Learning Architecture",
+        "attended": 38,
+        "total": 41,
+        "pct": 92.6
+      },
+      {
+        "code": "CS802",
+        "name": "Natural Language Processing",
+        "attended": 34,
+        "total": 38,
+        "pct": 89.4
+      },
+      {
+        "code": "CS803",
+        "name": "Database Management Systems",
+        "attended": 28,
+        "total": 36,
+        "pct": 77.8
+      },
+      {
+        "code": "CS804",
+        "name": "Distributed Cloud Systems",
+        "attended": 32,
+        "total": 35,
+        "pct": 91.4
+      }
+    ],
+    "active_requests": [
+      {
+        "request_id": "REQ-1012",
+        "certificate_type": "Bonafide Certificate (Passport / Visa)",
+        "status": "Approved",
+        "applied_date": "2026-09-14",
+        "remarks": "Actioned by Academic Authority: Approved on 2026-09-29"
+      }
+    ],
+    "recent_activities": [
+      {
+        "title": "Biometric Attendance Recorded",
+        "description": "CSE Lab 404 \u2022 Console RFID check verified",
+        "time_label": "Today, 10:42 AM",
+        "icon": "check_circle",
+        "color": "emerald"
+      },
+      {
+        "title": "Academic Twin Synchronized",
+        "description": "Semester 8 SGPA model confidence: 100%",
+        "time_label": "Yesterday",
+        "icon": "hub",
+        "color": "purple"
+      }
+    ]
+  },
+  {
+    "student_id": "23331a42014",
+    "password": "student@123",
+    "full_name": "Arjun Chatterjee",
+    "department": "IT",
+    "email": "arjun.chatterjee14@college.edu",
+    "cgpa": 7.8,
+    "phone": "+91-9876123450",
+    "semester": 8,
+    "year": 4,
+    "attendance_pct": 83.0,
+    "fee_balance": 12500.0,
+    "fee_status": "Pending",
+    "digital_twin_score": 81,
+    "subjects": [
+      {
+        "code": "IT801",
+        "name": "Cloud Infrastructure & DevOps",
+        "attended": 39,
+        "total": 40,
+        "pct": 97.5
+      },
+      {
+        "code": "IT802",
+        "name": "Modern Web Architectures",
+        "attended": 35,
+        "total": 38,
+        "pct": 92.1
+      },
+      {
+        "code": "IT803",
+        "name": "Cybersecurity & Ethical Hacking",
+        "attended": 31,
+        "total": 36,
+        "pct": 86.1
+      },
+      {
+        "code": "IT804",
+        "name": "Big Data Analytics Engine",
+        "attended": 33,
+        "total": 35,
+        "pct": 94.3
+      }
+    ],
+    "active_requests": [
+      {
+        "request_id": "REQ-1013",
+        "certificate_type": "Bonafide Certificate (Passport / Visa)",
+        "status": "Approved",
+        "applied_date": "2026-09-14",
+        "remarks": "Actioned by Academic Authority: Approved on 2026-09-29"
+      }
+    ],
+    "recent_activities": [
+      {
+        "title": "Biometric Attendance Recorded",
+        "description": "IT Lab 404 \u2022 Console RFID check verified",
+        "time_label": "Today, 10:42 AM",
+        "icon": "check_circle",
+        "color": "emerald"
+      },
+      {
+        "title": "Academic Twin Synchronized",
+        "description": "Semester 8 SGPA model confidence: 81%",
+        "time_label": "Yesterday",
+        "icon": "hub",
+        "color": "purple"
+      }
+    ]
+  },
+  {
+    "student_id": "23331a42015",
+    "password": "student@123",
+    "full_name": "Neha Verma",
+    "department": "MECH",
+    "email": "neha.verma15@college.edu",
+    "cgpa": 8.34,
+    "phone": "+91-9345678120",
+    "semester": 8,
+    "year": 4,
+    "attendance_pct": 87.6,
+    "fee_balance": 12500.0,
+    "fee_status": "Pending",
+    "digital_twin_score": 88,
+    "subjects": [
+      {
+        "code": "ME801",
+        "name": "Robotics & Mechatronics",
+        "attended": 33,
+        "total": 40,
+        "pct": 82.5
+      },
+      {
+        "code": "ME802",
+        "name": "Finite Element Method",
+        "attended": 29,
+        "total": 38,
+        "pct": 76.3
+      },
+      {
+        "code": "ME803",
+        "name": "Computational Fluid Dynamics",
+        "attended": 34,
+        "total": 38,
+        "pct": 89.5
+      },
+      {
+        "code": "ME804",
+        "name": "Automotive Powertrains",
+        "attended": 30,
+        "total": 35,
+        "pct": 85.7
+      }
+    ],
+    "active_requests": [
+      {
+        "request_id": "REQ-1014",
+        "certificate_type": "Bonafide Certificate (Passport / Visa)",
+        "status": "Approved",
+        "applied_date": "2026-09-14",
+        "remarks": "Actioned by Academic Authority: Approved on 2026-09-29"
+      }
+    ],
+    "recent_activities": [
+      {
+        "title": "Biometric Attendance Recorded",
+        "description": "MECH Lab 404 \u2022 Console RFID check verified",
+        "time_label": "Today, 10:42 AM",
+        "icon": "check_circle",
+        "color": "emerald"
+      },
+      {
+        "title": "Academic Twin Synchronized",
+        "description": "Semester 8 SGPA model confidence: 88%",
+        "time_label": "Yesterday",
+        "icon": "hub",
+        "color": "purple"
+      }
+    ]
+  },
+  {
+    "student_id": "23331a42016",
+    "password": "student@123",
+    "full_name": "Manish Reddy",
+    "department": "CIVIL",
+    "email": "manish.reddy16@college.edu",
+    "cgpa": 6.95,
+    "phone": "+91-9845123456",
+    "semester": 8,
+    "year": 4,
+    "attendance_pct": 75.8,
+    "fee_balance": 18500.0,
+    "fee_status": "Pending",
+    "digital_twin_score": 71,
+    "subjects": [
+      {
+        "code": "CV801",
+        "name": "Advanced Structural Dynamics",
+        "attended": 29,
+        "total": 38,
+        "pct": 76.3
+      },
+      {
+        "code": "CV802",
+        "name": "Earthquake Resistant Design",
+        "attended": 31,
+        "total": 38,
+        "pct": 81.6
+      },
+      {
+        "code": "CV803",
+        "name": "Geotechnical Site Exploration",
+        "attended": 33,
+        "total": 38,
+        "pct": 86.8
+      },
+      {
+        "code": "CV804",
+        "name": "Environmental Impact Analysis",
+        "attended": 35,
+        "total": 40,
+        "pct": 87.5
+      }
+    ],
+    "active_requests": [
+      {
+        "request_id": "REQ-1015",
+        "certificate_type": "Bonafide Certificate (Passport / Visa)",
+        "status": "Approved",
+        "applied_date": "2026-09-14",
+        "remarks": "Actioned by Academic Authority: Approved on 2026-09-29"
+      }
+    ],
+    "recent_activities": [
+      {
+        "title": "Biometric Attendance Recorded",
+        "description": "CIVIL Lab 404 \u2022 Console RFID check verified",
+        "time_label": "Today, 10:42 AM",
+        "icon": "check_circle",
+        "color": "emerald"
+      },
+      {
+        "title": "Academic Twin Synchronized",
+        "description": "Semester 8 SGPA model confidence: 71%",
+        "time_label": "Yesterday",
+        "icon": "hub",
+        "color": "purple"
+      }
+    ]
+  },
+  {
+    "student_id": "23331a42017",
+    "password": "student@123",
+    "full_name": "Kavya Iyer",
+    "department": "EEE",
+    "email": "kavya.iyer17@college.edu",
+    "cgpa": 9.18,
+    "phone": "+91-9745123456",
+    "semester": 8,
+    "year": 4,
+    "attendance_pct": 94.8,
+    "fee_balance": 0.0,
+    "fee_status": "Paid",
+    "digital_twin_score": 99,
+    "subjects": [
+      {
+        "code": "EE801",
+        "name": "Smart Grid & Power Quality",
+        "attended": 38,
+        "total": 40,
+        "pct": 95.0
+      },
+      {
+        "code": "EE802",
+        "name": "Electric Vehicle Drives & Batteries",
+        "attended": 36,
+        "total": 38,
+        "pct": 94.7
+      },
+      {
+        "code": "EE803",
+        "name": "High Voltage Engineering",
+        "attended": 32,
+        "total": 36,
+        "pct": 88.9
+      },
+      {
+        "code": "EE804",
+        "name": "Industrial Automation & PLC",
+        "attended": 34,
+        "total": 36,
+        "pct": 94.4
+      }
+    ],
+    "active_requests": [
+      {
+        "request_id": "REQ-1016",
+        "certificate_type": "Bonafide Certificate (Passport / Visa)",
+        "status": "Approved",
+        "applied_date": "2026-09-14",
+        "remarks": "Actioned by Academic Authority: Approved on 2026-09-29"
+      }
+    ],
+    "recent_activities": [
+      {
+        "title": "Biometric Attendance Recorded",
+        "description": "EEE Lab 404 \u2022 Console RFID check verified",
+        "time_label": "Today, 10:42 AM",
+        "icon": "check_circle",
+        "color": "emerald"
+      },
+      {
+        "title": "Academic Twin Synchronized",
+        "description": "Semester 8 SGPA model confidence: 99%",
+        "time_label": "Yesterday",
+        "icon": "hub",
+        "color": "purple"
+      }
+    ]
+  },
+  {
+    "student_id": "23331a42018",
+    "password": "student@123",
+    "full_name": "Ravi Singh",
+    "department": "CSE",
+    "email": "ravi.singh18@college.edu",
+    "cgpa": 8.42,
+    "phone": "+91-9645123456",
+    "semester": 8,
+    "year": 4,
+    "attendance_pct": 88.3,
+    "fee_balance": 12500.0,
+    "fee_status": "Pending",
+    "digital_twin_score": 89,
+    "subjects": [
+      {
+        "code": "CS801",
+        "name": "Deep Learning Architecture",
+        "attended": 38,
+        "total": 41,
+        "pct": 92.6
+      },
+      {
+        "code": "CS802",
+        "name": "Natural Language Processing",
+        "attended": 34,
+        "total": 38,
+        "pct": 89.4
+      },
+      {
+        "code": "CS803",
+        "name": "Database Management Systems",
+        "attended": 28,
+        "total": 36,
+        "pct": 77.8
+      },
+      {
+        "code": "CS804",
+        "name": "Distributed Cloud Systems",
+        "attended": 32,
+        "total": 35,
+        "pct": 91.4
+      }
+    ],
+    "active_requests": [
+      {
+        "request_id": "REQ-1017",
+        "certificate_type": "Bonafide Certificate (Passport / Visa)",
+        "status": "Approved",
+        "applied_date": "2026-09-14",
+        "remarks": "Actioned by Academic Authority: Approved on 2026-09-29"
+      }
+    ],
+    "recent_activities": [
+      {
+        "title": "Biometric Attendance Recorded",
+        "description": "CSE Lab 404 \u2022 Console RFID check verified",
+        "time_label": "Today, 10:42 AM",
+        "icon": "check_circle",
+        "color": "emerald"
+      },
+      {
+        "title": "Academic Twin Synchronized",
+        "description": "Semester 8 SGPA model confidence: 89%",
+        "time_label": "Yesterday",
+        "icon": "hub",
+        "color": "purple"
+      }
+    ]
+  },
+  {
+    "student_id": "23331a42019",
+    "password": "student@123",
+    "full_name": "Swati Gupta",
+    "department": "DE",
+    "email": "swati.gupta19@college.edu",
+    "cgpa": 7.65,
+    "phone": "+91-9545123456",
+    "semester": 8,
+    "year": 4,
+    "attendance_pct": 81.8,
+    "fee_balance": 12500.0,
+    "fee_status": "Pending",
+    "digital_twin_score": 80,
+    "subjects": [
+      {
+        "code": "DE801",
+        "name": "IoT & Sensor Systems Design",
+        "attended": 35,
+        "total": 38,
+        "pct": 92.1
+      },
+      {
+        "code": "DE802",
+        "name": "Rapid Prototyping & CAD",
+        "attended": 32,
+        "total": 36,
+        "pct": 88.9
+      },
+      {
+        "code": "DE803",
+        "name": "Human-Centered Product Design",
+        "attended": 34,
+        "total": 38,
+        "pct": 89.5
+      },
+      {
+        "code": "DE804",
+        "name": "Embedded Firmware & RTOS",
+        "attended": 30,
+        "total": 36,
+        "pct": 83.3
+      }
+    ],
+    "active_requests": [
+      {
+        "request_id": "REQ-1018",
+        "certificate_type": "Bonafide Certificate (Passport / Visa)",
+        "status": "Approved",
+        "applied_date": "2026-09-14",
+        "remarks": "Actioned by Academic Authority: Approved on 2026-09-29"
+      }
+    ],
+    "recent_activities": [
+      {
+        "title": "Biometric Attendance Recorded",
+        "description": "DE Lab 404 \u2022 Console RFID check verified",
+        "time_label": "Today, 10:42 AM",
+        "icon": "check_circle",
+        "color": "emerald"
+      },
+      {
+        "title": "Academic Twin Synchronized",
+        "description": "Semester 8 SGPA model confidence: 80%",
+        "time_label": "Yesterday",
+        "icon": "hub",
+        "color": "purple"
+      }
+    ]
+  },
+  {
+    "student_id": "23331a42020",
+    "password": "student@123",
+    "full_name": "Aditi Sharma",
+    "department": "IT",
+    "email": "aditi.sharma20@college.edu",
+    "cgpa": 9.05,
+    "phone": "+91-9445123456",
+    "semester": 8,
+    "year": 4,
+    "attendance_pct": 93.7,
+    "fee_balance": 0.0,
+    "fee_status": "Paid",
+    "digital_twin_score": 97,
+    "subjects": [
+      {
+        "code": "IT801",
+        "name": "Cloud Infrastructure & DevOps",
+        "attended": 39,
+        "total": 40,
+        "pct": 97.5
+      },
+      {
+        "code": "IT802",
+        "name": "Modern Web Architectures",
+        "attended": 35,
+        "total": 38,
+        "pct": 92.1
+      },
+      {
+        "code": "IT803",
+        "name": "Cybersecurity & Ethical Hacking",
+        "attended": 31,
+        "total": 36,
+        "pct": 86.1
+      },
+      {
+        "code": "IT804",
+        "name": "Big Data Analytics Engine",
+        "attended": 33,
+        "total": 35,
+        "pct": 94.3
+      }
+    ],
+    "active_requests": [
+      {
+        "request_id": "REQ-1019",
+        "certificate_type": "Bonafide Certificate (Passport / Visa)",
+        "status": "Approved",
+        "applied_date": "2026-09-14",
+        "remarks": "Actioned by Academic Authority: Approved on 2026-09-29"
+      }
+    ],
+    "recent_activities": [
+      {
+        "title": "Biometric Attendance Recorded",
+        "description": "IT Lab 404 \u2022 Console RFID check verified",
+        "time_label": "Today, 10:42 AM",
+        "icon": "check_circle",
+        "color": "emerald"
+      },
+      {
+        "title": "Academic Twin Synchronized",
+        "description": "Semester 8 SGPA model confidence: 97%",
+        "time_label": "Yesterday",
+        "icon": "hub",
+        "color": "purple"
+      }
+    ]
+  }
+]
